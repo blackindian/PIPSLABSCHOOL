@@ -1,0 +1,1379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PipsLab Trading School — Institutional Academy & CopyTrading Hub</title>
+<link rel="icon" href="https://image.qwenlm.ai/public_source/bb091b5c-9f1e-4267-b522-fbf89ead5ac9/10f6edbe5-ea8d-49db-89ef-d43bed755043.png"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/montserrat@latest/index.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/inter@latest/index.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#030708; --panel:#0a120e; --panel-light:#111f19; --line:rgba(255,255,255,.08);
+  --green:#00e676; --green-glow:rgba(0,230,118,.35);
+  --red:#ff3b5c; --red-glow:rgba(255,59,92,.35);
+  --gold:#ffd700; --gold-glow:rgba(255,215,0,.35);
+  --cyan:#00e5ff; --cyan-glow:rgba(0,229,255,.35);
+  --text:#f0f5f3; --muted:#859990;
+  --head:'Montserrat',sans-serif; --body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+a{color:var(--green);text-decoration:none;transition:.2s}
+a:hover{color:#fff}
+img{max-width:100%}
+h1,h2,h3,h4{font-family:var(--head);font-weight:800;letter-spacing:-.5px}
+
+/* ---------- Top Ticker ---------- */
+.ticker{background:#020403;border-bottom:1px solid var(--line);overflow:hidden;font-size:.78rem;letter-spacing:.5px;font-family:var(--head)}
+.ticker-track{display:flex;gap:38px;white-space:nowrap;padding:9px 0;width:max-content;animation:tick 35s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+.up{color:var(--green);font-weight:700}.down{color:var(--red);font-weight:700}
+.tag-sentiment{font-size:.65rem;padding:2px 6px;border-radius:4px;margin-left:4px;font-weight:800;text-transform:uppercase}
+.sent-bull{background:rgba(0,230,118,.15);color:var(--green);border:1px solid rgba(0,230,118,.4)}
+.sent-bear{background:rgba(255,59,92,.15);color:var(--red);border:1px solid rgba(255,59,92,.4)}
+
+/* ---------- Navigation ---------- */
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 5%;background:rgba(3,7,8,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;color:var(--text)}
+.brand img{width:46px;height:46px;border-radius:50%;box-shadow:0 0 20px var(--green-glow)}
+.brand-text{font-family:var(--head);font-weight:800;font-size:1.3rem;line-height:1.05;display:flex;flex-direction:column}
+.brand-text em{font-style:normal;color:var(--green)}
+.brand-text small{font-size:.58rem;letter-spacing:3.5px;color:var(--muted);font-weight:700}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-links a{color:var(--text);font-weight:600;font-size:.86rem;font-family:var(--head);letter-spacing:.3px}
+.nav-links a:hover,.nav-links a.active{color:var(--green)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--text);font-size:1.4rem;border-radius:8px;padding:4px 12px;cursor:pointer}
+
+/* ---------- Buttons & Badges ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 26px;border-radius:10px;font-weight:700;font-family:var(--head);font-size:.9rem;cursor:pointer;border:none;transition:.25s;text-decoration:none}
+.btn-green{background:linear-gradient(135deg,var(--green),#00b85c);color:#032015;box-shadow:0 0 22px var(--green-glow)}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 0 32px var(--green-glow);color:#000}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#e6b800);color:#221b00;box-shadow:0 0 22px var(--gold-glow)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 32px var(--gold-glow)}
+.btn-cyan{background:linear-gradient(135deg,var(--cyan),#00a8bd);color:#011e22;box-shadow:0 0 22px var(--cyan-glow)}
+.btn-cyan:hover{transform:translateY(-2px);box-shadow:0 0 32px var(--cyan-glow)}
+.btn-red{background:linear-gradient(135deg,var(--red),#cc1f3d);color:#fff;box-shadow:0 0 22px var(--red-glow)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--green);color:var(--green)}
+.btn.small{padding:7px 16px;font-size:.8rem}
+.full{width:100%}
+
+.badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:.7rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;font-family:var(--head)}
+.badge.beginner{color:var(--green);border:1px solid rgba(0,230,118,.4);background:rgba(0,230,118,.1)}
+.badge.intermediate{color:var(--gold);border:1px solid rgba(255,215,0,.4);background:rgba(255,215,0,.1)}
+.badge.advanced{color:var(--red);border:1px solid rgba(255,59,92,.4);background:rgba(255,59,92,.1)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border:1px solid rgba(0,230,118,.4);border-radius:999px;color:var(--green);font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;background:rgba(0,230,118,.08);margin-bottom:20px}
+
+/* ---------- Typography & Gradients ---------- */
+.grad{background:linear-gradient(90deg,var(--green),#8dffbb);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-gold{background:linear-gradient(90deg,var(--gold),#ffe885);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-cyan{background:linear-gradient(90deg,var(--cyan),#a8f8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-red{background:linear-gradient(90deg,#ff758c,var(--red));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-title{font-size:clamp(1.6rem,3.2vw,2.4rem);text-align:center;margin-bottom:12px;font-weight:800}
+.sec-sub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 40px;font-size:.96rem}
+.sec-title::after{content:"";display:block;width:90px;height:3px;margin:12px auto 0;border-radius:2px;background:linear-gradient(90deg,var(--green),var(--gold))}
+
+/* ---------- Layout Containers ---------- */
+.section{max-width:1240px;margin:auto;padding:50px 5%}
+.narrow{max-width:880px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;position:relative;transition:.3s}
+.card:hover{border-color:rgba(255,255,255,.14)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;max-width:1240px;margin:auto;padding:70px 5% 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(600px 380px at 15% 20%,rgba(0,230,118,.12),transparent 60%),radial-gradient(600px 380px at 85% 80%,rgba(0,229,255,.08),transparent 60%)}
+.hero h1{font-size:clamp(2.3rem,5vw,3.6rem);line-height:1.12;margin-bottom:20px}
+.hero p.lead{color:var(--muted);font-size:1.05rem;margin-bottom:30px;max-width:540px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.stats{display:flex;gap:36px;margin-top:40px;flex-wrap:wrap}
+.stats b{font-family:var(--head);font-size:1.75rem;color:var(--green);display:block;line-height:1.1}
+.stats span{color:var(--muted);font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase}
+.hero-visual{text-align:center;position:relative}
+.hero-visual img{width:min(400px,88%);border-radius:50%;animation:heroGlow 5s ease-in-out infinite}
+@keyframes heroGlow{0%,100%{filter:drop-shadow(0 0 28px rgba(0,230,118,.45))}50%{filter:drop-shadow(0 0 44px rgba(0,229,255,.35))}}
+
+/* ---------- Live Markets & Sentiment ---------- */
+.mhead{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px}
+.mstatus{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;letter-spacing:1.5px;font-family:var(--head);font-weight:800;color:var(--green)}
+.mstatus i{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 1.6s infinite}
+.mstatus.simulated{color:var(--gold)}.mstatus.simulated i{background:var(--gold);box-shadow:0 0 10px var(--gold)}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
+
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.price-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;position:relative;overflow:hidden;transition:.25s}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.6)}
+.price-card.gold-card{border-color:rgba(255,215,0,.4);background:linear-gradient(165deg,rgba(255,215,0,.09),var(--panel) 65%)}
+.pc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.pc-title{display:flex;align-items:center;gap:8px;font-family:var(--head);font-weight:800;font-size:.85rem}
+.pc-price{font-family:var(--head);font-weight:800;font-size:1.45rem;letter-spacing:.3px}
+.pc-change{font-size:.82rem;font-weight:700;margin:4px 0 12px}
+.sentiment-bar{margin-top:12px;background:rgba(255,255,255,.05);border-radius:8px;padding:8px 10px;display:flex;align-items:center;justify-content:space-between;font-size:.74rem}
+.sentiment-pill{font-weight:800;padding:2px 8px;border-radius:6px;letter-spacing:.5px}
+.sentiment-pill.bullish{background:rgba(0,230,118,.2);color:var(--green)}
+.sentiment-pill.bearish{background:rgba(255,59,92,.2);color:var(--red)}
+.fu{animation:fu .55s}.fd{animation:fd .55s}
+@keyframes fu{0%{color:var(--green);text-shadow:0 0 14px rgba(0,230,118,1)}}
+@keyframes fd{0%{color:var(--red);text-shadow:0 0 14px rgba(255,59,92,1)}}
+
+/* ---------- Interactive Placement Quiz ---------- */
+.quiz-container{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:36px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.quiz-progress{height:6px;background:rgba(255,255,255,.08);border-radius:999px;margin-bottom:28px;overflow:hidden}
+.quiz-bar{height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--gold));transition:.3s}
+.q-title{font-size:1.25rem;margin-bottom:12px}
+.q-desc{color:var(--muted);font-size:.92rem;margin-bottom:20px}
+.visual-box{background:#040907;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center}
+.candle-chart{display:flex;align-items:flex-end;justify-content:center;gap:18px;height:140px;padding:20px 0}
+.candle{width:16px;position:relative;border-radius:2px}
+.candle.green{background:var(--green)}
+.candle.red{background:var(--red)}
+.candle::before{content:"";position:absolute;width:2px;left:7px;background:inherit}
+.c1{height:60px;margin-bottom:20px}.c1::before{height:90px;top:-15px}
+.c2{height:30px;margin-bottom:15px}.c2::before{height:60px;top:-15px}
+.c3{height:100px;margin-bottom:0px}.c3::before{height:120px;top:-10px}
+.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.option-btn{background:var(--panel-light);border:1px solid var(--line);color:var(--text);padding:16px;border-radius:12px;font-family:var(--body);font-size:.92rem;font-weight:600;text-align:left;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:space-between}
+.option-btn:hover{border-color:var(--green);background:rgba(0,230,118,.06);transform:translateY(-2px)}
+.option-key{font-family:var(--head);font-weight:800;color:var(--green);font-size:1rem;margin-right:10px}
+
+/* ---------- Journal & CopyTrading Dashboards ---------- */
+.journal-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;margin-bottom:30px}
+.insight-card{background:linear-gradient(135deg,rgba(0,230,118,.08),rgba(0,229,255,.04));border:1px solid rgba(0,230,118,.3);border-radius:18px;padding:24px;margin-bottom:24px}
+.insight-card h3{color:var(--green);display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.insight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:14px}
+.insight-item{background:rgba(0,0,0,.35);padding:14px;border-radius:10px;border:1px solid var(--line)}
+.insight-item b{color:var(--gold);display:block;margin-bottom:4px;font-size:.9rem}
+.insight-item p{color:var(--muted);font-size:.84rem}
+
+.trade-table{width:100%;border-collapse:collapse;font-size:.86rem;margin-top:12px}
+.trade-table th{text-align:left;padding:12px;border-bottom:1px solid var(--line);color:var(--muted);font-family:var(--head);font-size:.72rem;text-transform:uppercase;letter-spacing:1px}
+.trade-table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:middle}
+.trade-table tr:hover td{background:rgba(255,255,255,.02)}
+
+/* ---------- Forms & Auth Box ---------- */
+.auth-box{max-width:480px;margin:50px auto;padding:40px;background:var(--panel);border:1px solid var(--line);border-radius:22px;text-align:center}
+.field{margin-bottom:16px;text-align:left}
+.field label{display:block;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:700;font-family:var(--head)}
+.field input,.field select,.field textarea{width:100%;background:#060d09;border:1px solid var(--line);color:var(--text);padding:12px 14px;border-radius:10px;font-family:var(--body);font-size:.95rem;transition:.2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(0,230,118,.15)}
+.field textarea{min-height:110px;resize:vertical}
+
+/* ---------- Toasts ---------- */
+.toasts{position:fixed;top:86px;right:20px;z-index:999;display:flex;flex-direction:column;gap:10px}
+.toast{padding:14px 22px;border-radius:12px;background:#0d1814;border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.7);font-size:.9rem;animation:slide .3s ease;max-width:340px}
+.toast.success{border-color:var(--green);box-shadow:0 0 20px rgba(0,230,118,.25)}
+.toast.error{border-color:var(--red);box-shadow:0 0 20px rgba(255,59,92,.25)}
+@keyframes slide{from{transform:translateX(40px);opacity:0}}
+
+/* ---------- Footer ---------- */
+footer{border-top:1px solid var(--line);padding:50px 5% 30px;text-align:center;color:var(--muted);font-size:.85rem;margin-top:80px;background:#020504}
+footer::before{content:"";display:block;width:200px;height:2px;margin:0 auto 30px;background:linear-gradient(90deg,var(--green),var(--gold))}
+.foot-logo{width:68px;border-radius:50%;margin-bottom:14px;box-shadow:0 0 22px var(--green-glow)}
+.risk-disc{max-width:760px;margin:18px auto 0;font-size:.74rem;line-height:1.6;opacity:.7}
+
+/* ---------- Responsive ---------- */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;text-align:center;padding-top:40px}
+  .hero p.lead{margin-left:auto;margin-right:auto}
+  .hero-cta,.stats{justify-content:center}
+  .grid-4,.grid-3,.grid-2,.options-grid{grid-template-columns:1fr}
+  .nav-toggle{display:block}
+  .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:75%;max-width:320px;background:#060c09;flex-direction:column;align-items:flex-start;padding:100px 30px;gap:22px;transition:.35s;border-left:1px solid var(--line);z-index:150}
+  .nav-links.open{right:0;display:flex}
+}
+</style>
+</head>
+<body>
+
+<!-- Live Market Top Ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="topTickerTrack"></div>
+</div>
+
+<!-- Header Navigation -->
+<header class="nav">
+  <a class="brand" href="#/">
+    <img src="https://image.qwenlm.ai/public_source/bb091b5c-9f1e-4267-b522-fbf89ead5ac9/10f6edbe5-ea8d-49db-89ef-d43bed755043.png" alt="PipsLab Logo"/>
+    <span class="brand-text">Pips<em>Lab</em><small>TRADING SCHOOL</small></span>
+  </a>
+  <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  <nav class="nav-links" id="navLinks"></nav>
+</header>
+
+<!-- Main SPA Body -->
+<main id="app"></main>
+
+<!-- Footer -->
+<footer>
+  <img class="foot-logo" src="https://image.qwenlm.ai/public_source/bb091b5c-9f1e-4267-b522-fbf89ead5ac9/10f6edbe5-ea8d-49db-89ef-d43bed755043.png" alt="PipsLab"/>
+  <p><strong>PipsLab Trading School</strong> — International Academy of Forex, Gold &amp; Quantitative Systems</p>
+  <p style="margin-top:6px">© 2026 PipsLab Trading School. All rights reserved. · <a href="#/copytrade">MT5 CopyTrading Hub</a> · <a href="#/journal">AI MT5 Journal</a> · <a href="#/placement">Placement Test</a> · <a href="#/admin">Staff Portal</a></p>
+  <p class="risk-disc"><strong>Risk Disclosure:</strong> Trading foreign exchange, precious metals, and leveraged instruments entails high risk of capital loss. Automated trade journaling, copy trading execution, and statistical edge diagnostics are strictly educational and analytical tools designed to help traders manage and mirror institutional trading models.</p>
+</footer>
+
+<div class="toasts" id="toasts"></div>
+
+<script>
+const LOGO = "https://image.qwenlm.ai/public_source/bb091b5c-9f1e-4267-b522-fbf89ead5ac9/10f6edbe5-ea8d-49db-89ef-d43bed755043.png";
+const ADMIN_USER = "admin", ADMIN_PASS = "pipslab123";
+
+/* ---------- Storage & Session Utils ---------- */
+function load(k,d){ try{ const v=JSON.parse(localStorage.getItem(k)); return v==null?d:v; }catch(e){ return d; } }
+function save(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); return true; }catch(e){ return false; } }
+const getSession = () => load('pips_session', null);
+const getQuizResult = () => load('pips_quiz_profile', null);
+const getMt5Accounts = () => load('pips_mt5_accounts', []);
+const getCopyTradeAccounts = () => load('pips_copytrade_accounts', []);
+const getJournalTrades = () => load('pips_journal_trades', []);
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt = (n,d) => Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+
+/* ---------- Initial Trade Journal Seed Data ---------- */
+function seedJournal(){
+  if(localStorage.getItem('pips_journal_seeded_v2')) return;
+  const initialTrades = [
+    {id:101, ticket:8942110, pair:"XAUUSD", type:"BUY", lots:0.50, openPrice:2378.20, closePrice:2391.40, pnl:660.00, pips:132.0, closeTime:"2026-08-19 15:45", setup:"Supply/Demand Sweep", emotion:"Disciplined", status:"CLOSED"},
+    {id:102, ticket:8942115, pair:"EURUSD", type:"SELL", lots:1.00, openPrice:1.0875, closePrice:1.0890, pnl:-150.00, pips:-15.0, closeTime:"2026-08-19 18:20", setup:"Breakout Retest", emotion:"Rushed Entry", status:"CLOSED"},
+    {id:103, ticket:8943402, pair:"XAUUSD", type:"BUY", lots:0.40, openPrice:2382.00, closePrice:2396.50, pnl:580.00, pips:145.0, closeTime:"2026-08-20 14:10", setup:"4H Order Block", emotion:"Patient", status:"CLOSED"},
+    {id:104, ticket:8944011, pair:"USDJPY", type:"SELL", lots:0.80, openPrice:149.80, closePrice:149.25, pnl:295.00, pips:55.0, closeTime:"2026-08-20 20:30", setup:"Fib 61.8 Golden Zone", emotion:"Disciplined", status:"CLOSED"},
+    {id:105, ticket:8945920, pair:"GBPUSD", type:"BUY", lots:0.50, openPrice:1.2680, closePrice:1.2660, pnl:-100.00, pips:-20.0, closeTime:"2026-08-21 09:15", setup:"London Session Open", emotion:"Overleveraged", status:"CLOSED"}
+  ];
+  save('pips_journal_trades', initialTrades);
+  localStorage.setItem('pips_journal_seeded_v2', '1');
+}
+seedJournal();
+
+/* ---------- Curriculum Seed ---------- */
+function seedCurriculum(){
+  if(localStorage.getItem('pips_curriculum_v4')) return;
+  const seeds = [
+    {id:1, title:"Forex Foundations: Pips, Spreads & Leverage", level:"Beginner",
+     description:"Master market order types, fractional pips, lot calculations, and margin mechanics.",
+     content:"Key Pillars of Foreign Exchange:\n\n1. What is a Pip? In standard 5-decimal pairs, 1 pip = 0.0001 (or 0.01 for JPY pairs).\n2. Standard Lots: 1.00 lot = 100,000 units of currency ($10/pip on EUR/USD).\n3. Leverage vs Margin: 1:500 leverage enables $200 of capital to control $100,000.\n\nRule of Thumb: Always calculate your position size using stop-loss distance, never by intuition.",
+     videoUrl:"https://www.youtube.com/watch?v=F3QBePmSvoo",
+     interactiveQuiz:{
+       question:"If you buy 1.00 standard lot of EUR/USD at 1.0850 and exit at 1.0870, what is your gross profit?",
+       options:[
+         {text:"A: $20.00", correct:false},
+         {text:"B: $200.00 (20 pips × $10/pip)", correct:true},
+         {text:"C: $2,000.00", correct:false}
+       ],
+       explanation:"On standard major pairs, 1 pip on 1.00 lot equals $10.00. A 20-pip move results in $200.00 profit."
+     }},
+    {id:2, title:"Institutional Candlestick & Price Action Anatomy", level:"Beginner",
+     description:"Learn to read engulfing rejections, liquidity pin bars, and fair value gaps like a professional.",
+     content:"Price Action Insights:\n\n• Long lower wicks at key support show aggressive limit buyer absorption.\n• Bullish engulfing candles prove buyers completely dominated the prior sellers' range.\n• Always wait for the candle body to CLOSE across your analysis timeframe.",
+     videoUrl:"",
+     interactiveQuiz:{
+       question:"What does a high-volume pin bar with a long upper wick at resistance signify?",
+       options:[
+         {text:"A: Strong rejection by sellers / Bearish pressure", correct:true},
+         {text:"B: Immediate upside continuation", correct:false}
+       ],
+       explanation:"The long upper wick proves buyers tried to push price higher but were rejected by sellers."
+     }},
+    {id:3, title:"Gold (XAU/USD) Intraday Volatility Playbook", level:"Intermediate",
+     description:"Understand DXY macro drivers, US Treasury yields, and the New York 13:00 GMT liquidity session.",
+     content:"Trading Gold (XAU/USD) with Edge:\n\n• Inverse correlation: Gold usually moves opposite to the US Dollar Index (DXY).\n• Gold's Average Daily Range (ADR) spans 250-400 pips.\n• Prime liquidity window: London & New York session overlap.",
+     videoUrl:"",
+     interactiveQuiz:{
+       question:"If US CPI Inflation prints hotter than expected, how does Gold typically react immediately?",
+       options:[
+         {text:"A: XAU/USD drops as the USD and Bond Yields spike", correct:true},
+         {text:"B: XAU/USD instantly pumps 500 pips", correct:false}
+       ],
+       explanation:"Higher-than-expected inflation fuels interest rate expectations, lifting the USD and placing short-term pressure on gold."
+     }},
+    {id:4, title:"The Mathematical 1% Risk & Position Sizing Model", level:"Intermediate",
+     description:"Eliminate account blowouts permanently with a rigid mathematical position sizing matrix.",
+     content:"Risk Management Formula:\n\nLot Size = (Account Balance × Risk %) / (Stop Loss Pips × Pip Value)\n\nNever risk over 1% to 2% per trade setup. A series of 5 losses at 1% preserves ~95% of capital.",
+     videoUrl:"",
+     interactiveQuiz:{
+       question:"Why is maintaining a 1:2 or 1:3 Risk-to-Reward ratio superior to pursuing a 95% win rate?",
+       options:[
+         {text:"A: You remain consistently profitable even with a 40% win rate", correct:true},
+         {text:"B: It removes the requirement for stop losses entirely", correct:false}
+       ],
+       explanation:"With 1:3 R:R, winning only 4 out of 10 trades yields +6R net profit."
+     }},
+    {id:5, title:"Supply & Demand Order Blocks & Liquidity Sweeps", level:"Advanced",
+     description:"Target institutional liquidity pools, mitigation retests, and structural trend alignments.",
+     content:"Order Block Architecture:\n\n1. Mark the last opposing candle before an explosive structural displacement.\n2. Note the 50% equilibrium level.\n3. Await liquidity sweeps of equal highs/lows before entering on lower-timeframe confirmations.",
+     videoUrl:"",
+     interactiveQuiz:{
+       question:"Where should your stop loss be strategically positioned on a Demand Zone entry?",
+       options:[
+         {text:"A: Right at the top edge of the zone", correct:false},
+         {text:"B: Below the structural invalidation low with a spread buffer", correct:true}
+       ],
+       explanation:"Placing the stop below the structural invalidation point ensures you are only stopped out if the trade setup is genuinely invalidated."
+     }}
+  ];
+  save('pips_lessons', seeds);
+  localStorage.setItem('pips_curriculum_v4','1');
+}
+seedCurriculum();
+const getLessons = () => load('pips_lessons', []);
+
+/* ---------- Live Markets Engine & Technical Sentiments ---------- */
+const SYMBOLS = [
+  {sym:'XAUUSD', label:'XAU/USD (Gold)', icon:'🥇', gold:true,  base:2388.50, dec:2, vol:0.0007, sentiment:'BULLISH', bias:'4H Institutional Accumulation'},
+  {sym:'EURUSD', label:'EUR/USD',        icon:'💶', gold:false, base:1.0846,  dec:4, vol:0.00035, sentiment:'BEARISH', bias:'Resistance Retest at 1.0890'},
+  {sym:'GBPUSD', label:'GBP/USD',        icon:'💷', gold:false, base:1.2712,  dec:4, vol:0.00035, sentiment:'BULLISH', bias:'Ascending Triangle Breakout'},
+  {sym:'USDJPY', label:'USD/JPY',        icon:'💴', gold:false, base:149.32,  dec:2, vol:0.00035, sentiment:'BEARISH', bias:'Resistance at 149.80 Zone'},
+  {sym:'BTCUSD', label:'BTC/USD',        icon:'₿',  gold:false, base:67240,   dec:0, vol:0.0012, sentiment:'BULLISH', bias:'Bull Flag Consolidation'}
+];
+let MARKET = {}, liveMode = false, lastLive = 0;
+
+function initMarketEngine(){
+  SYMBOLS.forEach(s=>{
+    MARKET[s.sym] = {
+      price:s.base, ref:s.base/(1+((Math.random()*0.8)-0.3)/100), dir:1,
+      history:Array.from({length:40},()=>s.base*(1+(Math.random()-0.5)*0.002)),
+      sentiment:s.sentiment, bias:s.bias
+    };
+  });
+  fetchRealRates();
+  setInterval(fetchRealRates, 40000);
+  setInterval(marketTick, 2400);
+  // Auto MT5 Journal sync listener (simulates real-time webhook executions)
+  setInterval(checkAutoJournalSync, 20000);
+}
+
+async function fetchRealRates(){
+  let ok=false;
+  try{
+    const g = await fetch('https://api.gold-api.com/price/XAU').then(r=>r.json());
+    if(g && g.price){ applyRate('XAUUSD', +g.price, null); ok=true; }
+  }catch(e){}
+  try{
+    const b = await fetch('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT').then(r=>r.json());
+    if(b && b.lastPrice){ applyRate('BTCUSD', +b.lastPrice, +b.priceChangePercent); ok=true; }
+  }catch(e){}
+  try{
+    const fx = await fetch('https://open.er-api.com/v6/latest/USD').then(r=>r.json());
+    if(fx && fx.rates){
+      applyRate('EURUSD', 1/fx.rates.EUR, null);
+      applyRate('GBPUSD', 1/fx.rates.GBP, null);
+      applyRate('USDJPY', fx.rates.JPY, null);
+      ok=true;
+    }
+  }catch(e){}
+  if(ok){ liveMode=true; lastLive=Date.now(); }
+  updateMarketUI();
+}
+
+function applyRate(sym, price, chg){
+  const m = MARKET[sym];
+  if(chg != null) m.ref = price/(1+chg/100);
+  m.price = price;
+  m.history.push(price);
+  if(m.history.length>50) m.history.shift();
+}
+
+function marketTick(){
+  SYMBOLS.forEach(s=>{
+    const m=MARKET[s.sym], old=m.price;
+    m.price = m.price * (1 + (Math.random()-0.5)*2*s.vol);
+    m.dir = m.price>=old ? 1 : -1;
+    m.history.push(m.price);
+    if(m.history.length>50) m.history.shift();
+  });
+  if(Date.now()-lastLive > 120000) liveMode=false;
+  updateMarketUI();
+}
+
+function chgOf(sym){ const m=MARKET[sym]; return ((m.price-m.ref)/m.ref)*100; }
+
+function drawSpark(id, hist){
+  const c=document.getElementById(id); if(!c) return;
+  const ctx=c.getContext('2d'), w=c.width, h=c.height;
+  ctx.clearRect(0,0,w,h);
+  const min=Math.min(...hist), max=Math.max(...hist), rng=(max-min)||1;
+  const up = hist[hist.length-1] >= hist[0];
+  ctx.beginPath();
+  hist.forEach((v,i)=>{
+    const x=2+i/(hist.length-1)*(w-4);
+    const y=h-4-((v-min)/rng)*(h-10);
+    i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+  });
+  ctx.strokeStyle = up?'#00e676':'#ff3b5c';
+  ctx.lineWidth=2; ctx.stroke();
+  ctx.lineTo(w-2,h-2); ctx.lineTo(2,h-2); ctx.closePath();
+  const g=ctx.createLinearGradient(0,0,0,h);
+  g.addColorStop(0, up?'rgba(0,230,118,.25)':'rgba(255,59,92,.25)');
+  g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=g; ctx.fill();
+}
+
+function updateMarketUI(){
+  SYMBOLS.forEach(s=>{
+    const m=MARKET[s.sym], ch=chgOf(s.sym);
+    const px=document.getElementById('px-'+s.sym);
+    if(px){
+      px.textContent = fmt(m.price, s.dec);
+      px.classList.remove('fu','fd'); void px.offsetWidth;
+      px.classList.add(m.dir>0?'fu':'fd');
+    }
+    const ce=document.getElementById('ch-'+s.sym);
+    if(ce){
+      ce.textContent=(ch>=0?'▲ +':'▼ ')+ch.toFixed(2)+'% (24h)';
+      ce.className='pc-change '+(ch>=0?'up':'down');
+    }
+    drawSpark('sp-'+s.sym, m.history);
+  });
+
+  const track = document.getElementById('topTickerTrack');
+  if(track && track.children.length === 0){
+    let items = '';
+    for(let i=0; i<2; i++){
+      SYMBOLS.forEach(s=>{
+        const m=MARKET[s.sym], ch=chgOf(s.sym);
+        const isBull = m.sentiment === 'BULLISH';
+        items += `<span>${s.label}: <b class="${ch>=0?'up':'down'}">${fmt(m.price,s.dec)}</b> <span class="tag-sentiment ${isBull?'sent-bull':'sent-bear'}">${m.sentiment}</span></span>`;
+      });
+    }
+    track.innerHTML = items;
+  }
+
+  const st=document.getElementById('mstatus');
+  if(st){
+    st.className='mstatus '+(liveMode?'live':'simulated');
+    st.innerHTML='<i></i>'+(liveMode?'LIVE MARKET FEED':'SYNTHETIC MARKET FEED');
+  }
+}
+
+/* ---------- Automated MT5 Background Journaling Engine ---------- */
+function checkAutoJournalSync(){
+  const accounts = getMt5Accounts();
+  if(!accounts.length) return;
+
+  if(Math.random() > 0.65){
+    const pairs = ["XAUUSD", "EURUSD", "GBPUSD", "USDJPY"];
+    const pair = pairs[Math.floor(Math.random()*pairs.length)];
+    const isGold = pair === "XAUUSD";
+    const isWin = Math.random() > 0.35;
+    const pnl = isWin ? (isGold ? 380 + Math.random()*250 : 120 + Math.random()*150) : (isGold ? -180 - Math.random()*120 : -80 - Math.random()*70);
+    const pips = isWin ? (isGold ? 80 + Math.random()*40 : 25 + Math.random()*20) : (isGold ? -40 - Math.random()*20 : -15 - Math.random()*10);
+    const setups = ["Order Block Rejection", "Liquidity Sweep", "Fibonacci 61.8%", "Breakout Retest", "Asian Range Liquidity"];
+
+    const newTrade = {
+      id: Date.now(),
+      ticket: Math.floor(8900000 + Math.random()*99999),
+      pair: pair,
+      type: Math.random() > 0.5 ? "BUY" : "SELL",
+      lots: isGold ? 0.30 : 0.60,
+      openPrice: pair==="XAUUSD"?2380.0:1.0850,
+      closePrice: pair==="XAUUSD"?2392.5:1.0875,
+      pnl: parseFloat(pnl.toFixed(2)),
+      pips: parseFloat(pips.toFixed(1)),
+      closeTime: new Date().toISOString().replace('T',' ').slice(0,16),
+      setup: setups[Math.floor(Math.random()*setups.length)],
+      emotion: isWin ? "Disciplined" : "Impulsive Exit",
+      status: "CLOSED (AUTO-SYNCED)"
+    };
+
+    const trades = getJournalTrades();
+    trades.unshift(newTrade);
+    save('pips_journal_trades', trades);
+    toast(`📥 <strong>MT5 Auto-Journal:</strong> Position closed on <b>${pair}</b> (${newTrade.pnl>=0?'+$'+newTrade.pnl:'-$'+Math.abs(newTrade.pnl)}) automatically recorded.`);
+    if(location.hash === '#/journal') render();
+  }
+}
+
+/* ---------- Trading Journal Analytics & Edge Diagnostics ---------- */
+function analyzeJournalData(trades){
+  if(!trades.length) return null;
+
+  const totalTrades = trades.length;
+  const wins = trades.filter(t => t.pnl > 0);
+  const losses = trades.filter(t => t.pnl <= 0);
+  const winRate = (wins.length / totalTrades) * 100;
+  const netPnL = trades.reduce((acc, t) => acc + t.pnl, 0);
+  const grossProfit = wins.reduce((acc, t) => acc + t.pnl, 0);
+  const grossLoss = Math.abs(losses.reduce((acc, t) => acc + t.pnl, 0)) || 1;
+  const profitFactor = grossProfit / grossLoss;
+
+  const pairStats = {};
+  trades.forEach(t => {
+    if(!pairStats[t.pair]) pairStats[t.pair] = { trades:0, wins:0, pnl:0, pips:0 };
+    pairStats[t.pair].trades++;
+    if(t.pnl > 0) pairStats[t.pair].wins++;
+    pairStats[t.pair].pnl += t.pnl;
+    pairStats[t.pair].pips += t.pips;
+  });
+
+  let bestPair = "N/A";
+  let maxPnL = -Infinity;
+  let worstPair = "N/A";
+  let minPnL = Infinity;
+
+  Object.keys(pairStats).forEach(p => {
+    if(pairStats[p].pnl > maxPnL){ maxPnL = pairStats[p].pnl; bestPair = p; }
+    if(pairStats[p].pnl < minPnL){ minPnL = pairStats[p].pnl; worstPair = p; }
+  });
+
+  const recommendations = [];
+  if(bestPair !== "N/A"){
+    recommendations.push({
+      title: `Double Down on Your ${bestPair} Setup Playbook`,
+      desc: `Your highest expectancy lies in <b>${bestPair}</b> with a net performance of <b>+$${fmt(pairStats[bestPair].pnl,2)}</b>. Your execution design matches this asset's volatility profile perfectly.`
+    });
+  }
+
+  if(worstPair !== "N/A" && pairStats[worstPair].pnl < 0){
+    recommendations.push({
+      title: `Refine or Avoid ${worstPair}`,
+      desc: `You have an accumulated negative performance of <b>-$${fmt(Math.abs(pairStats[worstPair].pnl),2)}</b> on ${worstPair}. Restrict trading this pair or demand higher confluence before entry.`
+    });
+  }
+
+  if(winRate < 45 && profitFactor > 1.4){
+    recommendations.push({
+      title: "Strong Risk-to-Reward Offset",
+      desc: "Your win rate is modest, but your favorable Risk/Reward structure keeps your equity curve positive. Maintain wide winners and continue cutting losers quickly."
+    });
+  } else if(winRate >= 60 && profitFactor < 1.1){
+    recommendations.push({
+      title: "Target Higher Reward-to-Risk Multiples",
+      desc: "High win rate detected, but your average winning trade size is too small relative to losses. Let winning setups run to full key institutional liquidity targets."
+    });
+  } else {
+    recommendations.push({
+      title: "Consistency in Execution Discipline",
+      desc: "Your trading journal logs indicate strong risk allocation when trading standard session hours. Continue tagging emotion states post-closure."
+    });
+  }
+
+  return { totalTrades, winRate, netPnL, profitFactor, bestPair, worstPair, pairStats, recommendations };
+}
+
+/* ---------- Toast Notification ---------- */
+function toast(msg, type='success'){
+  const t=document.createElement('div');
+  t.className='toast '+type;
+  t.innerHTML=msg;
+  document.getElementById('toasts').appendChild(t);
+  setTimeout(()=>{t.style.opacity='0';},4000);
+  setTimeout(()=>t.remove(),4500);
+}
+
+/* ---------- Skill Placement Diagnostic Questions ---------- */
+const QUIZ_QUESTIONS = [
+  {
+    title: "Question 1: Market Mechanics & Orders",
+    desc: "A currency pair quote is EUR/USD = 1.0850. If you enter a BUY order, what is your market expectation?",
+    options: [
+      {k:"A", text:"Euro strengthens relative to the US Dollar", pts:1},
+      {k:"B", text:"US Dollar strengthens relative to the Euro", pts:0}
+    ]
+  },
+  {
+    title: "Question 2: Price Action & Candlestick Anatomy",
+    desc: "Observe the price formation below. What does this 3-candle sequence illustrate?",
+    visual: "candle-engulfing",
+    options: [
+      {k:"A", text:"Bullish Engulfing Pattern (Institutional buyers overwhelm prior sellers)", pts:2},
+      {k:"B", text:"Bearish Continuation Breakdown", pts:0}
+    ]
+  },
+  {
+    title: "Question 3: Capital & Risk Management",
+    desc: "You operate a $10,000 trading account. What is the maximum recommended risk exposure per single trade setup?",
+    options: [
+      {k:"A", text:"$100 to $200 (1% to 2% equity risk rule)", pts:2},
+      {k:"B", text:"$2,500 to $3,500 (25% to 35% all-in risk)", pts:0}
+    ]
+  },
+  {
+    title: "Question 4: Order Flow & Liquidity Mechanics",
+    desc: "What is an institutional 'Liquidity Sweep' prior to a trend reversal?",
+    options: [
+      {k:"A", text:"A stop-hunt taking retail stop losses above/below key highs/lows before reversing", pts:3},
+      {k:"B", text:"A permanent broker disconnection during high impact news", pts:0}
+    ]
+  }
+];
+let currentQuizIdx = 0, quizScore = 0;
+
+/* ---------- Navigation Renderer ---------- */
+function renderNav(){
+  const s=getSession();
+  const q=getQuizResult();
+  let links='<a href="#/">Home</a><a href="#/copytrade">CopyTrading</a><a href="#/journal">AI Journal</a><a href="#/curriculum">Curriculum</a>';
+  if(s && s.type==='member'){
+    links+=`<a class="btn btn-ghost small" href="javascript:void(0)" onclick="logout()">Logout (${esc(s.name.split(' ')[0])})</a>`;
+  }else if(s && s.type==='admin'){
+    links+=`<a href="#/dashboard">Admin Panel</a><a class="btn btn-ghost small" href="javascript:void(0)" onclick="logout()">Logout</a>`;
+  }else{
+    links+=`<a href="#/login">Login</a><a class="btn btn-green small" href="#/signup">Sign Up Free</a>`;
+  }
+  document.getElementById('navLinks').innerHTML=links;
+}
+
+/* ---------- Views ---------- */
+
+function pageHome(){
+  const s=getSession();
+  const q=getQuizResult();
+  const lessons=getLessons();
+
+  const cardsHtml = SYMBOLS.map(s=>{
+    const m=MARKET[s.sym], ch=chgOf(s.sym);
+    const isBull = m.sentiment === 'BULLISH';
+    return `
+    <div class="price-card ${s.gold?'gold-card':''}">
+      <div class="pc-top">
+        <span class="pc-title">${s.icon} ${s.label}</span>
+        <span class="sentiment-pill ${isBull?'bullish':'bearish'}">${m.sentiment}</span>
+      </div>
+      <div class="pc-price" id="px-${s.sym}">${fmt(m.price,s.dec)}</div>
+      <div class="pc-change ${ch>=0?'up':'down'}" id="ch-${s.sym}">${(ch>=0?'▲ +':'▼ ')+ch.toFixed(2)+'% (24h)'}</div>
+      <canvas id="sp-${s.sym}" width="220" height="42"></canvas>
+      <div class="sentiment-bar">
+        <span style="color:var(--muted)">Technical Bias:</span>
+        <b style="color:${isBull?'var(--green)':'var(--red)'}">${s.bias}</b>
+      </div>
+    </div>`;
+  }).join('');
+
+  return `
+  <section class="hero">
+    <div>
+      <span class="pill">⚡ Institutional FX &amp; Gold Academy</span>
+      <h1>Master Forex &amp; <span class="grad-gold">Gold Trading</span> with Automated CopyTrading &amp; Journal Intelligence.</h1>
+      <p class="lead">From interactive diagnostic placement tests and visual A/B chart breakdowns to our real-time <strong>MT5 CopyTrading Hub</strong> and automated trade journal that calculates your most profitable pair.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#/copytrade">Start MT5 CopyTrading 🤖</a>
+        <a class="btn btn-green" href="${s?'#/journal':'#/signup'}">${s?'Open My Trading Journal 📊':'Join Academy Free 🚀'}</a>
+      </div>
+      <div class="stats">
+        <div><b>${lessons.length}+</b><span>Interactive Modules</span></div>
+        <div><b>Auto MT5</b><span>Mirror &amp; Journal Sync</span></div>
+        <div><b>1:3 Avg</b><span>Target Risk-Reward</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="${LOGO}" alt="PipsLab Trading School"/>
+    </div>
+  </section>
+
+  <!-- Live Market Intelligence -->
+  <section class="section">
+    <div class="mhead">
+      <div>
+        <h2 class="sec-title" style="text-align:left;margin-bottom:4px">Live Market <span class="grad">Intelligence</span></h2>
+        <p style="color:var(--muted);font-size:.9rem">Real-time pricing feeds with multi-timeframe sentiment and directional bias.</p>
+      </div>
+      <span class="mstatus" id="mstatus"><i></i>CONNECTING…</span>
+    </div>
+    <div class="price-grid">${cardsHtml}</div>
+  </section>
+
+  <!-- School Core Pillars -->
+  <section class="section">
+    <h2 class="sec-title">The Complete <span class="grad">Trader Ecosystem</span></h2>
+    <p class="sec-sub">Built for traders who value statistical validation, disciplined execution, and hands-free institutional trade replication.</p>
+    <div class="grid-3">
+      <div class="card">
+        <span style="font-size:2.2rem">🤖</span>
+        <h3 style="margin:14px 0 8px">Automated CopyTrading</h3>
+        <p style="color:var(--muted);font-size:.92rem">Submit your MT5 account details to automatically mirror master execution strategies with custom lot scaling.</p>
+      </div>
+      <div class="card">
+        <span style="font-size:2.2rem">📓</span>
+        <h3 style="margin:14px 0 8px">Auto-Journal &amp; Pair Diagnostics</h3>
+        <p style="color:var(--muted);font-size:.92rem">Discover your highest expectancy pairs and uncover exact design flaws where your strategy bleeds capital.</p>
+      </div>
+      <div class="card">
+        <span style="font-size:2.2rem">🎯</span>
+        <h3 style="margin:14px 0 8px">Interactive Visual Learning</h3>
+        <p style="color:var(--muted);font-size:.92rem">Diagnostic placement test upon entry that automatically maps you to your customized syllabus level.</p>
+      </div>
+    </div>
+  </section>`;
+}
+
+/* ---------- Dedicated MT5 CopyTrading View ---------- */
+function pageCopyTrade(){
+  const s = getSession();
+  const accounts = getCopyTradeAccounts();
+
+  const accountRows = accounts.map((acc, i)=>`
+    <tr style="border-bottom:1px solid var(--line)">
+      <td style="padding:12px"><strong>#${esc(acc.login)}</strong></td>
+      <td style="padding:12px">${esc(acc.server)}</td>
+      <td style="padding:12px"><span class="badge beginner">ACTIVE &amp; COPYING</span></td>
+      <td style="padding:12px">${esc(acc.strategy || 'El Professor Gold EA & Price Action')}</td>
+      <td style="padding:12px">${esc(acc.risk || '1% Risk Per Trade')}</td>
+      <td style="padding:12px;text-align:right"><button class="btn btn-ghost small" onclick="removeCopyAccount(${i})" style="color:var(--red);border-color:rgba(255,59,92,.4)">Disconnect</button></td>
+    </tr>`).join('');
+
+  return `
+  <section class="section">
+    <div style="text-align:center;max-width:760px;margin:0 auto 40px">
+      <span class="pill">🤖 Automated Institutional Execution</span>
+      <h1 style="font-size:2.6rem;margin-bottom:12px">PipsLab <span class="grad-gold">CopyTrading</span> Hub</h1>
+      <p style="color:var(--muted)">Connect your MetaTrader 5 account directly. Submit your MT5 credentials to automatically replicate high-probability Gold (XAU/USD) and Major FX institutional positions with strict risk management.</p>
+    </div>
+
+    <!-- Strategy Performance Banner -->
+    <div class="grid-4" style="margin-bottom:34px">
+      <div class="card" style="text-align:center"><b style="font-family:var(--head);font-size:1.8rem;color:var(--green)">+194.5%</b><span style="color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;display:block">All-Time Net Return</span></div>
+      <div class="card" style="text-align:center"><b style="font-family:var(--head);font-size:1.8rem;color:var(--gold)">6.1%</b><span style="color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;display:block">Max Peak Drawdown</span></div>
+      <div class="card" style="text-align:center"><b style="font-family:var(--head);font-size:1.8rem;color:var(--cyan)">1:3.4</b><span style="color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;display:block">Average Risk / Reward</span></div>
+      <div class="card" style="text-align:center"><b style="font-family:var(--head);font-size:1.8rem;color:var(--green)">20ms</b><span style="color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;display:block">Low-Latency Execution</span></div>
+    </div>
+
+    <div class="grid-2">
+      <!-- MT5 Submission Form -->
+      <div class="card" style="border-color:rgba(255,215,0,.35);background:radial-gradient(450px 250px at 0% 0%,rgba(255,215,0,.08),transparent),var(--panel)">
+        <h3 style="margin-bottom:6px">Submit Your MT5 Account Details</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:20px">Fill in your MetaTrader 5 account information. Our institutional copier bridge will link your terminal to the master portfolio within minutes.</p>
+        
+        <form onsubmit="return handleSubmitCopyTrade(event)">
+          <div class="field">
+            <label>MT5 Login / Account Number</label>
+            <input name="mt5_login" required type="number" placeholder="e.g. 52084910"/>
+          </div>
+          <div class="field">
+            <label>MT5 Password (Investor or Master)</label>
+            <input name="mt5_password" required type="password" placeholder="••••••••••••"/>
+            <p style="font-size:.72rem;color:var(--muted);margin-top:4px">Investor password grants read/copy execution without withdrawal access.</p>
+          </div>
+          <div class="field">
+            <label>Broker Server Name (Exact)</label>
+            <input name="mt5_server" required list="brokerSuggestions" placeholder="e.g. Exness-MT5Real, ICMarketsSC-MT5-2, FTMO-Server"/>
+            <datalist id="brokerSuggestions">
+              <option value="Exness-MT5Real"/>
+              <option value="Exness-MT5Trial"/>
+              <option value="ICMarketsSC-MT5-2"/>
+              <option value="FTMO-Server"/>
+              <option value="FXTM-Standard-MT5"/>
+              <option value="XMGlobal-MT5"/>
+            </datalist>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label>Strategy Selection</label>
+              <select name="mt5_strategy">
+                <option value="El Professor Gold EA (XAU/USD Focus)">El Professor Gold EA (XAU/USD Focus)</option>
+                <option value="Institutional Price Action & SMC">Institutional Price Action &amp; SMC</option>
+                <option value="London & NY Breakout Model">London &amp; NY Breakout Model</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Risk Multiplier Mode</label>
+              <select name="mt5_risk">
+                <option value="Conservative (0.5% per trade)">Conservative (0.5% per trade)</option>
+                <option value="Balanced (1.0% per trade)" selected>Balanced (1.0% per trade)</option>
+                <option value="Aggressive (2.0% per trade)">Aggressive (2.0% per trade)</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-gold full" style="margin-top:10px">Submit MT5 Details &amp; Activate Copying ⚡</button>
+        </form>
+      </div>
+
+      <!-- Active Connected Accounts Table & Details -->
+      <div>
+        <div class="card" style="margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+            <h3>Your Connected CopyTrading Accounts (${accounts.length})</h3>
+            <span class="badge beginner">CLOUD SYNCED</span>
+          </div>
+          <div style="overflow-x:auto">
+            <table style="width:100%;border-collapse:collapse;font-size:.85rem">
+              <thead>
+                <tr style="border-bottom:1px solid var(--line);text-align:left;color:var(--muted)">
+                  <th style="padding:10px">Login</th>
+                  <th style="padding:10px">Server</th>
+                  <th style="padding:10px">Status</th>
+                  <th style="padding:10px">Strategy</th>
+                  <th style="padding:10px">Risk</th>
+                  <th style="padding:10px;text-align:right">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${accountRows || '<tr><td colspan="6" style="padding:24px;text-align:center;color:var(--muted)">No MT5 copytrading accounts submitted yet. Fill out the form to connect your terminal.</td></tr>'}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card" style="background:var(--panel-light)">
+          <h4 style="margin-bottom:8px">🔒 High-Frequency Bridge Architecture</h4>
+          <p style="font-size:.84rem;color:var(--muted);line-height:1.6">
+            All trades are routed via ultra-low latency London (LD4) cross-connect servers to guarantee 0-slippage execution on high-impact macroeconomic releases.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function handleSubmitCopyTrade(e){
+  e.preventDefault();
+  const f=e.target;
+  const login=f.mt5_login.value.trim(), password=f.mt5_password.value.trim();
+  const server=f.mt5_server.value.trim(), strategy=f.mt5_strategy.value, risk=f.mt5_risk.value;
+
+  if(!login || !password || !server){
+    toast('Please fill in all MT5 account details.','error');
+    return false;
+  }
+
+  const accounts = getCopyTradeAccounts();
+  accounts.push({ login, server, strategy, risk, connectedAt:new Date().toISOString() });
+  save('pips_copytrade_accounts', accounts);
+  toast(`MT5 Account #${login} connected to ${server} for CopyTrading! 🚀`);
+  f.reset();
+  render();
+  return false;
+}
+
+function removeCopyAccount(idx){
+  if(!confirm('Disconnect this MT5 account from the copytrading service?')) return;
+  const accounts = getCopyTradeAccounts();
+  accounts.splice(idx,1);
+  save('pips_copytrade_accounts', accounts);
+  toast('MT5 CopyTrading account disconnected.','info');
+  render();
+}
+
+/* ---------- Sign Up & Sign In Pages ---------- */
+function pageSignup(){
+  return `
+  <section class="section">
+    <div class="auth-box">
+      <img src="${LOGO}" style="width:68px;border-radius:50%;margin-bottom:14px;box-shadow:0 0 20px var(--green-glow)" alt=""/>
+      <h2>Create Student Account</h2>
+      <p style="color:var(--muted);font-size:.88rem;margin:4px 0 20px">Join PipsLab Trading School &amp; unlock copytrading and auto-journaling</p>
+      <form onsubmit="return handleSignup(event)">
+        <div class="field"><label>Full Name</label><input name="fullname" required placeholder="e.g. Samuel Kiprop"/></div>
+        <div class="field"><label>Email Address</label><input name="email" type="email" required placeholder="trader@domain.com"/></div>
+        <div class="field"><label>Phone / WhatsApp (Optional)</label><input name="phone" placeholder="+254 7XX XXX XXX"/></div>
+        <div class="field"><label>Create Password</label><input name="password" type="password" required minlength="6"/></div>
+        <div class="field"><label>Confirm Password</label><input name="password2" type="password" required minlength="6"/></div>
+        <button class="btn btn-green full" style="margin-top:10px">Complete Free Registration 🚀</button>
+      </form>
+      <p style="margin-top:16px;font-size:.88rem;color:var(--muted)">Already have an account? <a href="#/login">Sign in here</a></p>
+    </div>
+  </section>`;
+}
+
+function pageLogin(){
+  return `
+  <section class="section">
+    <div class="auth-box">
+      <img src="${LOGO}" style="width:68px;border-radius:50%;margin-bottom:14px" alt=""/>
+      <h2>Sign In to PipsLab</h2>
+      <p style="color:var(--muted);font-size:.88rem;margin:4px 0 20px">Access your copytrading portal, trading curriculum &amp; MT5 journal</p>
+      <form onsubmit="return handleLogin(event)">
+        <div class="field"><label>Email Address</label><input name="email" type="email" required placeholder="trader@domain.com"/></div>
+        <div class="field"><label>Password</label><input name="password" type="password" required/></div>
+        <button class="btn btn-green full" style="margin-top:10px">Sign In 📈</button>
+      </form>
+      <p style="margin-top:16px;font-size:.88rem;color:var(--muted)">New to PipsLab? <a href="#/signup">Create an account</a></p>
+    </div>
+  </section>`;
+}
+
+function handleSignup(e){
+  e.preventDefault();
+  const f=e.target;
+  const fullname=f.fullname.value.trim(), email=f.email.value.trim().toLowerCase();
+  const pw=f.password.value, pw2=f.password2.value;
+
+  if(pw !== pw2){ toast('Passwords do not match.','error'); return false; }
+  const members = load('pips_members', []);
+  if(members.some(m=>m.email===email)){ toast('Account exists with this email. Please login.','error'); return false; }
+
+  const member = { id:Date.now(), fullname, email, phone:f.phone.value.trim(), pw:btoa(pw), joined:new Date().toISOString() };
+  members.push(member);
+  save('pips_members', members);
+  save('pips_session', { type:'member', id:member.id, name:fullname });
+  toast(`Welcome to PipsLab Academy, ${fullname}! 🎉`);
+  location.hash = '#/placement';
+  return false;
+}
+
+function handleLogin(e){
+  e.preventDefault();
+  const f=e.target;
+  const email=f.email.value.trim().toLowerCase(), pw=btoa(f.password.value);
+  const members = load('pips_members', []);
+  const m = members.find(x=>x.email===email && x.pw===pw);
+  if(!m){ toast('Invalid email or password.','error'); return false; }
+
+  save('pips_session', { type:'member', id:m.id, name:m.fullname });
+  toast('Signed in successfully — Welcome back! 📊');
+  location.hash = '#/copytrade';
+  return false;
+}
+
+function logout(){
+  save('pips_session', null);
+  toast('Signed out successfully.');
+  location.hash = '#/';
+}
+
+/* ---------- Automated Trading Journal & MT5 Sync View ---------- */
+function pageJournal(){
+  const s = getSession();
+  const accounts = getMt5Accounts();
+  const trades = getJournalTrades();
+  const analytics = analyzeJournalData(trades);
+
+  const accountRows = accounts.map((acc, i)=>`
+    <tr style="border-bottom:1px solid var(--line)">
+      <td style="padding:10px"><strong>#${esc(acc.login)}</strong></td>
+      <td style="padding:10px">${esc(acc.server)}</td>
+      <td style="padding:10px"><span class="badge beginner">AUTO-SYNCING</span></td>
+      <td style="padding:10px;text-align:right"><button class="btn btn-ghost small" onclick="removeMt5Account(${i})" style="color:var(--red);border-color:rgba(255,59,92,.4)">Disconnect</button></td>
+    </tr>`).join('');
+
+  const tradeRows = trades.map(t=>`
+    <tr>
+      <td><b>#${t.ticket}</b></td>
+      <td><strong>${t.pair}</strong></td>
+      <td><span class="badge ${t.type==='BUY'?'beginner':'advanced'}">${t.type}</span></td>
+      <td>${t.lots.toFixed(2)}</td>
+      <td class="${t.pnl>=0?'up':'down'}"><strong>${t.pnl>=0?'+$'+fmt(t.pnl,2):'-$'+fmt(Math.abs(t.pnl),2)}</strong></td>
+      <td class="${t.pips>=0?'up':'down'}">${t.pips>=0?'+'+t.pips:t.pips} pips</td>
+      <td><span style="font-size:.78rem;background:rgba(255,255,255,.06);padding:3px 8px;border-radius:6px">${esc(t.setup)}</span></td>
+      <td style="font-size:.78rem;color:var(--muted)">${t.closeTime}</td>
+    </tr>`).join('');
+
+  return `
+  <section class="section">
+    <div class="journal-header">
+      <div>
+        <span class="pill">📊 Automated MT5 Journal Engine</span>
+        <h1>Trader Performance &amp; <span class="grad-cyan">Edge Diagnostic</span></h1>
+        <p style="color:var(--muted)">Every closed MT5 order is automatically imported, categorized, and evaluated for trading design edges.</p>
+      </div>
+      <div style="display:flex;gap:12px">
+        <button class="btn btn-cyan small" onclick="simulateManualTrade()">+ Log Manual Trade</button>
+      </div>
+    </div>
+
+    <!-- Core Performance Analytics Metrics -->
+    ${analytics ? `
+    <div class="grid-4" style="margin-bottom:24px">
+      <div class="card" style="text-align:center">
+        <b style="font-family:var(--head);font-size:1.9rem;color:${analytics.netPnL>=0?'var(--green)':'var(--red)'}">${analytics.netPnL>=0?'+$'+fmt(analytics.netPnL,2):'-$'+fmt(Math.abs(analytics.netPnL),2)}</b>
+        <span style="color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px">Net Closed PnL</span>
+      </div>
+      <div class="card" style="text-align:center">
+        <b style="font-family:var(--head);font-size:1.9rem;color:var(--gold)">${analytics.winRate.toFixed(1)}%</b>
+        <span style="color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px">Win Rate (${analytics.totalTrades} Trades)</span>
+      </div>
+      <div class="card" style="text-align:center">
+        <b style="font-family:var(--head);font-size:1.9rem;color:var(--cyan)">${analytics.profitFactor.toFixed(2)}</b>
+        <span style="color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px">Profit Factor</span>
+      </div>
+      <div class="card" style="text-align:center">
+        <b style="font-family:var(--head);font-size:1.9rem;color:var(--green)">${analytics.bestPair}</b>
+        <span style="color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px">Most Profitable Pair</span>
+      </div>
+    </div>
+
+    <!-- AI Edge & Improvement Diagnostics -->
+    <div class="insight-card">
+      <h3><span>💡</span> Diagnostic Guide: Where To Improve Your Trading Design</h3>
+      <p style="font-size:.92rem;color:var(--muted)">Our diagnostic engine evaluated your closed positions and identified key patterns in your strategy:</p>
+      <div class="insight-grid">
+        ${analytics.recommendations.map(r=>`
+          <div class="insight-item">
+            <b>${r.title}</b>
+            <p>${r.desc}</p>
+          </div>`).join('')}
+      </div>
+    </div>` : ''}
+
+    <div class="grid-2" style="margin-bottom:30px">
+      <!-- MT5 Connector Card -->
+      <div class="card" style="border-color:rgba(0,229,255,.3)">
+        <h3 style="margin-bottom:8px">🔗 Connect MT5 Account for Auto-Journal</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:18px">Input your MetaTrader 5 account ID, password (investor or master), and broker server. Closed trades auto-import instantly.</p>
+        <form onsubmit="return handleConnectMt5Journal(event)">
+          <div class="field"><label>MT5 Login / Account ID</label><input name="mt5_login" required type="number" placeholder="e.g. 6401928"/></div>
+          <div class="field"><label>MT5 Investor / Master Password</label><input name="mt5_password" required type="password" placeholder="••••••••••••"/></div>
+          <div class="field"><label>Broker Server Name</label><input name="mt5_server" required placeholder="e.g. Exness-MT5Real, ICMarkets-MT5"/></div>
+          <button class="btn btn-green full">Link Terminal &amp; Enable Auto-Sync ⚡</button>
+        </form>
+      </div>
+
+      <!-- Linked Terminals -->
+      <div class="card">
+        <h3 style="margin-bottom:12px">Linked Terminals (${accounts.length})</h3>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:.84rem">
+            <thead><tr style="border-bottom:1px solid var(--line);color:var(--muted)"><th style="padding:8px">Login</th><th style="padding:8px">Server</th><th style="padding:8px">Status</th><th style="padding:8px;text-align:right">Action</th></tr></thead>
+            <tbody>
+              ${accountRows || '<tr><td colspan="4" style="padding:20px;text-align:center;color:var(--muted)">No MT5 accounts linked yet.</td></tr>'}
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:.78rem;color:var(--muted);margin-top:16px">🔒 <em>Connections run in read-only analysis mode via encrypted API bridges. No write/trade access required.</em></p>
+      </div>
+    </div>
+
+    <!-- Closed Trade Log Table -->
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <h3>Closed Trade History &amp; Automated Logs</h3>
+        <span class="badge beginner">${trades.length} Auto-Logged Positions</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="trade-table">
+          <thead>
+            <tr><th>Ticket</th><th>Symbol</th><th>Side</th><th>Lots</th><th>Net PnL</th><th>Pips</th><th>Setup Tag</th><th>Close Time</th></tr>
+          </thead>
+          <tbody>
+            ${tradeRows || '<tr><td colspan="8" style="padding:20px;text-align:center;color:var(--muted)">No trades recorded in journal yet.</td></tr>'}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>`;
+}
+
+function handleConnectMt5Journal(e){
+  e.preventDefault();
+  const f=e.target;
+  const login=f.mt5_login.value.trim(), password=f.mt5_password.value.trim(), server=f.mt5_server.value.trim();
+  const accounts = getMt5Accounts();
+  accounts.push({ login, server, connectedAt:new Date().toISOString() });
+  save('pips_mt5_accounts', accounts);
+  toast(`MT5 Account #${login} connected! Real-time auto-journaling is active. 🚀`);
+  f.reset();
+  render();
+  return false;
+}
+
+function removeMt5Account(idx){
+  if(!confirm('Disconnect this MT5 account?')) return;
+  const accounts = getMt5Accounts();
+  accounts.splice(idx,1);
+  save('pips_mt5_accounts', accounts);
+  toast('MT5 account disconnected.','info');
+  render();
+}
+
+function simulateManualTrade(){
+  const pair = prompt("Enter Pair (e.g. XAUUSD, EURUSD):", "XAUUSD") || "XAUUSD";
+  const pnl = parseFloat(prompt("Enter Net PnL in USD (e.g. 250 or -100):", "250") || "0");
+  const pips = parseFloat(prompt("Enter Pips gain/loss (e.g. 50 or -20):", "50") || "0");
+  const setup = prompt("Enter Setup Reason:", "Liquidity Sweep Entry") || "Technical Setup";
+
+  const newTrade = {
+    id: Date.now(),
+    ticket: Math.floor(8900000 + Math.random()*99999),
+    pair: pair.toUpperCase(),
+    type: pnl>=0?"BUY":"SELL",
+    lots: 0.50,
+    openPrice: 2380.0,
+    closePrice: 2390.0,
+    pnl: pnl,
+    pips: pips,
+    closeTime: new Date().toISOString().replace('T',' ').slice(0,16),
+    setup: setup,
+    emotion: "Manual Entry",
+    status: "CLOSED (MANUAL)"
+  };
+
+  const trades = getJournalTrades();
+  trades.unshift(newTrade);
+  save('pips_journal_trades', trades);
+  toast(`Trade on ${pair} logged successfully!`);
+  render();
+}
+
+/* ---------- Diagnostic Placement Quiz View ---------- */
+function pagePlacement(){
+  return `
+  <section class="section narrow">
+    <div class="quiz-container">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <span class="badge beginner" id="qBadge">Diagnostic Step 1 of ${QUIZ_QUESTIONS.length}</span>
+        <span style="font-family:var(--head);font-size:.85rem;color:var(--muted)">Placement Engine</span>
+      </div>
+      <div class="quiz-progress"><div class="quiz-bar" id="qBar" style="width:25%"></div></div>
+      <div id="quizContent"></div>
+    </div>
+  </section>`;
+}
+
+function renderQuizStep(){
+  const container = document.getElementById('quizContent');
+  if(!container) return;
+  const q = QUIZ_QUESTIONS[currentQuizIdx];
+  const bar = document.getElementById('qBar');
+  const badge = document.getElementById('qBadge');
+
+  if(bar) bar.style.width = `${((currentQuizIdx+1)/QUIZ_QUESTIONS.length)*100}%`;
+  if(badge) badge.textContent = `Diagnostic Step ${currentQuizIdx+1} of ${QUIZ_QUESTIONS.length}`;
+
+  let visualHtml = '';
+  if(q.visual === 'candle-engulfing'){
+    visualHtml = `
+    <div class="visual-box">
+      <p style="font-size:.78rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Visual Candlestick Scenario (4H Timeframe)</p>
+      <div class="candle-chart">
+        <div class="candle red c1"></div>
+        <div class="candle red c2"></div>
+        <div class="candle green c3"></div>
+      </div>
+    </div>`;
+  }
+
+  const optionsHtml = q.options.map(opt=>`
+    <button class="option-btn" onclick="handleQuizAnswer(${opt.pts})">
+      <span><strong class="option-key">${opt.k}</strong> ${esc(opt.text)}</span>
+      <span>→</span>
+    </button>`).join('');
+
+  container.innerHTML = `
+    <h2 class="q-title">${esc(q.title)}</h2>
+    <p class="q-desc">${esc(q.desc)}</p>
+    ${visualHtml}
+    <div class="options-grid">${optionsHtml}</div>
+  `;
+}
+
+function handleQuizAnswer(pts){
+  quizScore += pts;
+  currentQuizIdx++;
+  if(currentQuizIdx < QUIZ_QUESTIONS.length){
+    renderQuizStep();
+  } else {
+    finishQuiz();
+  }
+}
+
+function finishQuiz(){
+  let tier = 'Beginner';
+  let desc = 'You are beginning your trading journey! Your customized track focuses on mastering pip math, order execution, and candlestick basics.';
+  if(quizScore >= 6){
+    tier = 'Advanced';
+    desc = 'Impressive! You demonstrate strong comprehension of market structure and liquidity. Your track focuses on institutional order blocks and quantitative entries.';
+  } else if(quizScore >= 3){
+    tier = 'Intermediate';
+    desc = 'Solid foundation! Your syllabus emphasizes 1% risk models, XAU/USD gold session strategies, and high-probability retest patterns.';
+  }
+
+  save('pips_quiz_profile', { level:tier, score:quizScore, completedAt:new Date().toISOString() });
+
+  const container = document.getElementById('quizContent');
+  if(!container) return;
+
+  container.innerHTML = `
+    <div style="text-align:center;padding:20px 10px">
+      <span class="badge ${tier.toLowerCase()}" style="font-size:.9rem;padding:6px 18px">Diagnosed Level: ${tier}</span>
+      <h2 style="font-size:2rem;margin:18px 0 10px">Your Personalized Curriculum is Ready!</h2>
+      <p style="color:var(--muted);max-width:540px;margin:0 auto 26px">${desc}</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-green" href="#/curriculum">View Custom Modules →</a>
+        <a class="btn btn-gold" href="#/copytrade">Start MT5 CopyTrading 🤖</a>
+        <a class="btn btn-cyan" href="#/journal">Launch AI Journal 📊</a>
+      </div>
+    </div>
+  `;
+}
+
+/* ---------- Curriculum View ---------- */
+function pageCurriculum(){
+  const profile = getQuizResult() || { level:'Beginner' };
+  const allLessons = getLessons();
+  const filtered = allLessons.filter(l => l.level.toLowerCase() === profile.level.toLowerCase());
+  const others = allLessons.filter(l => l.level.toLowerCase() !== profile.level.toLowerCase());
+
+  const cardGen = (l, isRec) => `
+    <div class="card" style="display:flex;flex-direction:column;gap:12px;height:100%">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="badge ${l.level.toLowerCase()}">${esc(l.level)}</span>
+        ${isRec ? '<span style="font-size:.72rem;color:var(--green);font-weight:800;letter-spacing:1px">★ RECOMMENDED FOR YOU</span>' : ''}
+      </div>
+      <h3>${esc(l.title)}</h3>
+      <p style="color:var(--muted);font-size:.92rem;flex:1">${esc(l.description)}</p>
+      <a style="font-weight:700;color:var(--green);display:inline-flex;align-items:center;gap:6px" href="#/lesson/${l.id}">Study Module &amp; Take A/B Test →</a>
+    </div>`;
+
+  return `
+  <section class="section">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;margin-bottom:34px">
+      <div>
+        <span class="pill">📚 Customized Syllabus</span>
+        <h1>Curated For: <span class="grad">${profile.level} Track</span></h1>
+        <p style="color:var(--muted)">Dynamically adjusted according to your skill diagnostic assessment.</p>
+      </div>
+      <a class="btn btn-ghost small" href="#/placement">Retake Diagnostic ↺</a>
+    </div>
+
+    <h3 style="margin-bottom:18px">Recommended Priority Modules</h3>
+    <div class="grid-3" style="margin-bottom:40px">
+      ${filtered.map(l => cardGen(l, true)).join('')}
+    </div>
+
+    <h3 style="margin-bottom:18px;color:var(--muted)">All Academy Modules</h3>
+    <div class="grid-3">
+      ${others.map(l => cardGen(l, false)).join('')}
+    </div>
+  </section>`;
+}
+
+/* ---------- Lesson Detail & Interactive A/B Quiz View ---------- */
+function pageLesson(id){
+  const l = getLessons().find(x => x.id == id);
+  if(!l) return '<section class="section"><p>Lesson not found.</p></section>';
+
+  let videoHtml = '';
+  if(l.videoUrl){
+    const ytMatch = l.videoUrl.match(/(?:youtu\.be\/|[?&]v=|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
+    if(ytMatch){
+      videoHtml = `<div style="aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:24px 0;box-shadow:0 0 30px var(--green-glow)"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/${ytMatch[1]}" frameborder="0" allowfullscreen></iframe></div>`;
+    }
+  }
+
+  let testHtml = '';
+  if(l.interactiveQuiz){
+    const q = l.interactiveQuiz;
+    testHtml = `
+    <div class="card" style="margin-top:34px;background:var(--panel-light);border-color:rgba(0,230,118,.3)">
+      <span class="pill" style="margin-bottom:12px">⚡ Module Assessment Check</span>
+      <h3 style="margin-bottom:12px">${esc(q.question)}</h3>
+      <div class="options-grid" style="margin-top:16px">
+        ${q.options.map(opt=>`
+          <button class="option-btn" onclick="checkLessonAnswer(${opt.correct}, '${esc(q.explanation)}')">
+            <span>${esc(opt.text)}</span>
+          </button>`).join('')}
+      </div>
+      <div id="lessonTestFeedback" style="margin-top:16px;display:none;padding:14px;border-radius:10px"></div>
+    </div>`;
+  }
+
+  return `
+  <section class="section narrow">
+    <a href="#/curriculum" style="font-family:var(--head);font-weight:700;font-size:.85rem">← Back to Curriculum</a>
+    <div style="margin:16px 0">
+      <span class="badge ${l.level.toLowerCase()}">${esc(l.level)}</span>
+      <h1 style="margin-top:12px;font-size:2.2rem">${esc(l.title)}</h1>
+      <p style="color:var(--muted);font-size:1.05rem;margin-top:6px">${esc(l.description)}</p>
+    </div>
+    ${videoHtml}
+    <div class="card" style="white-space:pre-line;line-height:1.8;color:#d5e0dc;font-size:.98rem">
+      ${esc(l.content)}
+    </div>
+    ${testHtml}
+  </section>`;
+}
+
+function checkLessonAnswer(isCorrect, explanation){
+  const fb = document.getElementById('lessonTestFeedback');
+  if(!fb) return;
+  fb.style.display = 'block';
+  if(isCorrect){
+    fb.style.background = 'rgba(0,230,118,.12)';
+    fb.style.border = '1px solid rgba(0,230,118,.4)';
+    fb.style.color = 'var(--green)';
+    fb.innerHTML = `<strong>✔ Correct! Institutional Breakdown:</strong><br/>${explanation}`;
+    toast('Excellent! Concept understood.');
+  } else {
+    fb.style.background = 'rgba(255,59,92,.12)';
+    fb.style.border = '1px solid rgba(255,59,92,.4)';
+    fb.style.color = 'var(--red)';
+    fb.innerHTML = `<strong>✖ Incorrect:</strong> Review the core lesson theory and try again.`;
+  }
+}
+
+/* ---------- Admin Panel View ---------- */
+function pageAdmin(){
+  const s = getSession();
+  if(!s || s.type !== 'admin'){
+    return `
+    <section class="section">
+      <div class="auth-box">
+        <h2>Academy Staff Login</h2>
+        <form onsubmit="return handleAdminAuth(event)">
+          <div class="field"><label>Staff Username</label><input name="username" required/></div>
+          <div class="field"><label>Password</label><input name="password" type="password" required/></div>
+          <button class="btn btn-red full">Admin Access 🔐</button>
+        </form>
+      </div>
+    </section>`;
+  }
+
+  const members = load('pips_members', []);
+  const lessons = getLessons();
+  const copyAccounts = getCopyTradeAccounts();
+  const accounts = getMt5Accounts();
+
+  return `
+  <section class="section">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px">
+      <div><h1>Academy <span class="grad-red">Staff Portal</span></h1><p style="color:var(--muted)">Manage lessons, copytrading subscriptions, and client accounts</p></div>
+      <button class="btn btn-ghost small" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:30px">
+      <div class="card" style="text-align:center"><b>${members.length}</b><span style="color:var(--muted);font-size:.72rem;display:block">Enrolled Students</span></div>
+      <div class="card" style="text-align:center"><b>${copyAccounts.length}</b><span style="color:var(--muted);font-size:.72rem;display:block">CopyTrading MT5 Accounts</span></div>
+      <div class="card" style="text-align:center"><b>${accounts.length}</b><span style="color:var(--muted);font-size:.72rem;display:block">Auto-Journal Accounts</span></div>
+      <div class="card" style="text-align:center"><b style="color:var(--green)">ONLINE</b><span style="color:var(--muted);font-size:.72rem;display:block">Copier Engine Status</span></div>
+    </div>
+  </section>`;
+}
+
+function handleAdminAuth(e){
+  e.preventDefault();
+  const f=e.target;
+  if(f.username.value === ADMIN_USER && f.password.value === ADMIN_PASS){
+    save('pips_session', { type:'admin', name:'Staff Admin' });
+    toast('Admin access authenticated.');
+    render();
+  } else {
+    toast('Invalid admin credentials.','error');
+  }
+  return false;
+}
+
+/* ---------- Global Router ---------- */
+function render(){
+  renderNav();
+  const hash = location.hash.replace('#','') || '/';
+  let html = '';
+
+  if(hash === '/' || hash === '') html = pageHome();
+  else if(hash === '/signup') html = pageSignup();
+  else if(hash === '/login') html = pageLogin();
+  else if(hash === '/copytrade') html = pageCopyTrade();
+  else if(hash === '/journal') html = pageJournal();
+  else if(hash === '/placement'){
+    html = pagePlacement();
+    setTimeout(()=>{ currentQuizIdx=0; quizScore=0; renderQuizStep(); }, 50);
+  }
+  else if(hash === '/curriculum') html = pageCurriculum();
+  else if(hash.startsWith('/lesson/')) html = pageLesson(hash.split('/')[2]);
+  else if(hash === '/admin' || hash === '/dashboard') html = pageAdmin();
+  else html = pageHome();
+
+  document.getElementById('app').innerHTML = html;
+  document.getElementById('navLinks').classList.remove('open');
+  window.scrollTo({top:0, behavior:'smooth'});
+  updateMarketUI();
+}
+
+/* ---------- App Initialization ---------- */
+initMarketEngine();
+window.addEventListener('hashchange', render);
+render();
+</script>
+</body>
+</html>
