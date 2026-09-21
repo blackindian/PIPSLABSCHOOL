@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PipsLab Trading School - Where Serious Traders Grow</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #0a0a0a;
+            --primary-green: #22c55e;
+            --primary-red: #ef4444;
+            --gray-dark: #1a1a1a;
+            --gray-medium: #2a2a2a;
+            --gray-light: #f5f5f5;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--primary-black);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            border-bottom: 1px solid var(--gray-medium);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-auth {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-auth a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn-signup {
+            background: var(--primary-green);
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            color: var(--primary-black) !important;
+            transition: all 0.3s;
+        }
+
+        .btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 8rem 5% 5rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--primary-black) 0%, var(--gray-dark) 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: var(--primary-black);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-white);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid var(--gray-medium);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--gray-dark);
+            border-radius: 15px;
+            border: 1px solid var(--gray-medium);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+
+        /* Success Stories */
+        .success-stories {
+            background: var(--gray-dark);
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .story-card {
+            background: var(--primary-black);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid var(--gray-medium);
+            transition: all 0.3s;
+        }
+
+        .story-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-5px);
+        }
+
+        .story-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .story-card .role {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-card blockquote {
+            font-style: italic;
+            color: var(--text-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .story-card .achievement {
+            color: var(--primary-green);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* About Educator */
+        .educator {
+            background: var(--primary-black);
+        }
+
+        .educator-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .educator-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .educator-stat {
+            background: var(--gray-dark);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .educator-stat .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+        }
+
+        .educator-stat .label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Telegram Community */
+        .telegram {
+            background: linear-gradient(135deg, var(--gray-dark) 0%, var(--primary-black) 100%);
+            border: 2px solid var(--primary-green);
+            border-radius: 20px;
+            margin: 4rem auto;
+            max-width: 1200px;
+        }
+
+        .telegram-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .telegram-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .telegram-info ul {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .telegram-info li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-gray);
+        }
+
+        .telegram-info li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        /* Free Course Section */
+        .free-course {
+            background: var(--primary-black);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .course-card {
+            background: var(--gray-dark);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid var(--gray-medium);
+            transition: all 0.3s;
+        }
+
+        .course-card:hover {
+            border-color: var(--primary-green);
+        }
+
+        .course-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .course-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Mastery Courses */
+        .mastery {
+            background: var(--gray-dark);
+        }
+
+        .mastery-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .mastery-card {
+            background: var(--primary-black);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid var(--gray-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mastery-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-green);
+        }
+
+        .mastery-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .mastery-card .level {
+            display: inline-block;
+            background: var(--primary-green);
+            color: var(--primary-black);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .mastery-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .mastery-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--gray-medium);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Academy Section */
+        .academy {
+            background: var(--primary-black);
+        }
+
+        .academy-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .academy-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .academy-info p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Coaching Section */
+        .coaching {
+            background: linear-gradient(180deg, var(--gray-dark) 0%, var(--primary-black) 100%);
+            border-top: 3px solid var(--primary-red);
+        }
+
+        .coaching-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .coaching h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 2rem;
+        }
+
+        .coaching-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            text-align: left;
+        }
+
+        .coaching-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--gray-dark);
+            border-radius: 10px;
+        }
+
+        .coaching-feature::before {
+            content: "✓";
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .pricing {
+            background: var(--gray-dark);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            border: 2px solid var(--primary-red);
+        }
+
+        .pricing .amount {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin: 1rem 0;
+        }
+
+        /* Editorial Section */
+        .editorial {
+            background: var(--primary-black);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: var(--gray-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--gray-medium);
+            transition: all 0.3s;
+        }
+
+        .article-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-5px);
+        }
+
+        .article-content {
+            padding: 2rem;
+        }
+
+        .article-category {
+            color: var(--primary-green);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-read-time {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .article-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Collaboration Section */
+        .collaboration {
+            background: var(--gray-dark);
+        }
+
+        .collab-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .collab-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .collab-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .collab-type {
+            background: var(--primary-black);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--gray-medium);
+        }
+
+        .collab-type h3 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--primary-black);
+        }
+
+        .faq-search {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .faq-search input {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--gray-medium);
+            background: var(--gray-dark);
+            color: var(--text-white);
+            font-size: 1rem;
+        }
+
+        .faq-search input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--gray-dark);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--gray-medium);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            background: var(--gray-medium);
+        }
+
+        .faq-answer {
+            padding: 0 2rem 1.5rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-dark);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--gray-medium);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-medium);
+            color: var(--text-gray);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .educator-content,
+            .telegram-content,
+            .academy-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Exness CTA */
+        .exness-cta {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #16a34a 100%);
+            color: var(--primary-black);
+            padding: 1.5rem 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .exness-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+        }
+
+        .partner-code {
+            background: var(--gray-dark);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: 2px dashed var(--primary-green);
+            display: inline-block;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: var(--primary-green);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <img src="logo.png" alt="PipsLab Trading School" class="logo">
+            <ul class="nav-links">
+                <li><a href="#gold-digger">Gold Digger</a></li>
+                <li><a href="#one-on-one">One on One</a></li>
+                <li><a href="#academy">Academy</a></li>
+                <li><a href="#mastery">Mastery Courses</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="#">Sign in</a>
+                <a href="https://one.exnesstrack.org/a/uhvsv3vp" class="btn-signup">Sign up</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>
+            <span>Where Serious Traders Grow.</span>
+        </h1>
+        <p>PipsLab Trading School is a distraction-free home for retail traders who want to quietly become consistently profitable. No fluff. Just results.</p>
+        <div class="hero-buttons">
+            <a href="https://t.me/PipsLabtradingSchool" class="btn-primary">Join the Community</a>
+            <a href="#free-course" class="btn-secondary">Beginner? Start For Free</a>
+        </div>
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">20M+</span>
+                <span class="stat-label">Audience</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">150K+</span>
+                <span class="stat-label">Students</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">14+</span>
+                <span class="stat-label">Years</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">170+</span>
+                <span class="stat-label">Countries</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="success-stories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Real Results from Real Traders.</h2>
+                <p>Success stories from our community members</p>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <h3>Kingsley</h3>
+                    <p class="role">Gold Masterclass Student</p>
+                    <blockquote>"After a year and a half of trying to figure it out alone, the Gold Digger Masterclass finally gave me a clear, rules-based way to trade. I stopped gambling and now follow a structured process I can review and refine."</blockquote>
+                    <div class="achievement">🏆 Achieved consistent profitability</div>
+                </div>
+                <div class="story-card">
+                    <h3>Farouk Badamasi</h3>
+                    <p class="role">Community Member</p>
+                    <blockquote>"This community made discipline and proper market analysis non-negotiable for me. I understand my risk on each idea and approach the charts with a lot more calm and confidence."</blockquote>
+                    <div class="achievement">🏆 Mastered risk management</div>
+                </div>
+                <div class="story-card">
+                    <h3>Vambe Harrison</h3>
+                    <p class="role">Signal Group Member, Nigeria</p>
+                    <blockquote>"I came for the signals but stayed for the explanations behind every setup. Now I build my own plans and use the signals as a professional second opinion, not a shortcut."</blockquote>
+                    <div class="achievement">🏆 Consistently profitable via signals</div>
+                </div>
+                <div class="story-card">
+                    <h3>Sulaiman Leefah</h3>
+                    <p class="role">XAU/USD Trader</p>
+                    <blockquote>"PipsLab helped me treat XAU/USD as a serious part of my overall financial plan, not a quick fix. Capital preservation and emotional control are now the foundation of how I trade gold."</blockquote>
+                    <div class="achievement"> Settled debts & finding financial freedom</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Educator -->
+    <section class="educator">
+        <div class="container">
+            <div class="educator-content">
+                <div>
+                    <h2>The educator the industry calls on.</h2>
+                    <p style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.8; margin: 2rem 0;">
+                        150,000 students. 170+ countries. One framework — clarity, discipline, results. 
+                        Based in Nairobi, Kenya, we've built a reputation for excellence in forex education.
+                    </p>
+                    <div class="educator-stats">
+                        <div class="educator-stat">
+                            <div class="number">150K+</div>
+                            <div class="label">Students mentored</div>
+                        </div>
+                        <div class="educator-stat">
+                            <div class="number">170+</div>
+                            <div class="label">Countries reached</div>
+                        </div>
+                        <div class="educator-stat">
+                            <div class="number">14+</div>
+                            <div class="label">Years in the market</div>
+                        </div>
+                        <div class="educator-stat">
+                            <div class="number">20M+</div>
+                            <div class="label">Audience reached</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://t.me/PipsLabtradingSchool" class="btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">
+                        Join Free Telegram Community
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Telegram Community -->
+    <section class="telegram">
+        <div class="container">
+            <div class="telegram-content">
+                <div class="telegram-info">
+                    <h2>Join Our Exclusive Telegram Signal Community</h2>
+                    <p style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.8;">
+                        Get instant alerts & setups directly in your Telegram. Join thousands of successful traders who rely on our high-conviction signals daily.
+                    </p>
+                    <ul>
+                        <li>Real-time trading signals</li>
+                        <li>Daily market analysis & breakdowns</li>
+                        <li>Exclusive chart setups</li>
+                        <li>Direct updates from PipsLab</li>
+                        <li>Over 230k+ active community members</li>
+                        <li>100% Free to join</li>
+                    </ul>
+                    <a href="https://t.me/PipsLabtradingSchool" class="btn-primary">Join Now on Telegram</a>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 8rem; color: var(--primary-green);">📱</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Course Section -->
+    <section class="free-course" id="free-course">
+        <div class="container">
+            <div class="section-header">
+                <h2>PipsLab Basics</h2>
+                <p>Start your journey. Zero cost attached.</p>
+            </div>
+            <p style="text-align: center; color: var(--text-gray); font-size: 1.1rem; max-width: 800px; margin: 0 auto 2rem;">
+                Gain access to our free self-paced beginner to intermediate course which comes with other benefits such as VIP access. 
+                You have to sign up to our recommended broker to gain access.
+            </p>
+            <div style="text-align: center; margin: 2rem 0;">
+                <a href="https://one.exnesstrack.org/a/uhvsv3vp" class="exness-cta">
+                    Sign Up with Exness Now
+                </a>
+                <div style="margin-top: 1rem; color: var(--text-gray);">
+                    Use Partner Code: <span class="partner-code">uhvsv3vp</span>
+                </div>
+            </div>
+            <div class="course-grid">
+                <div class="course-card">
+                    <h3>VIP Signals Channel</h3>
+                    <p>Free access to our dedicated Telegram VIP signals channel for real-time market setups and trading opportunities.</p>
+                </div>
+                <div class="course-card">
+                    <h3>Forex Foundations Course</h3>
+                    <p>Free access to our comprehensive fundamentals course. Earn a certificate at the end of your journey.</p>
+                </div>
+                <div class="course-card">
+                    <h3>Live Trade Sessions</h3>
+                    <p>Free access to regular live sessions with PipsLab. Navigate the markets together in real-time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mastery Courses -->
+    <section class="mastery" id="mastery">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Mastery Collection</h2>
+                <p>Go beyond the basics. An expanding library of battle-tested mastery courses designed to transform your understanding of market structure, institutional liquidity, and algorithmic execution.</p>
+            </div>
+            <div class="mastery-grid">
+                <div class="mastery-card">
+                    <span class="level">Foundations</span>
+                    <h3>Institutional Concepts</h3>
+                    <p>Decode the precise algorithmic footprints that drive the market. Stop trading against the banks—learn how to spot their liquidity traps and trade alongside them.</p>
+                    <div class="mastery-tags">
+                        <span class="tag">SELL SIDE LIQ</span>
+                        <span class="tag">BUY SIDE LIQ</span>
+                    </div>
+                </div>
+                <div class="mastery-card">
+                    <span class="level" style="background: var(--primary-red); color: white;">Advanced</span>
+                    <h3>Advanced Structure</h3>
+                    <p>Master multi-timeframe analysis. Understand deep market topography, complex pullbacks, and high-probability zones.</p>
+                    <div class="mastery-tags">
+                        <span class="tag">15M</span>
+                        <span class="tag">1H</span>
+                        <span class="tag">4H</span>
+                    </div>
+                </div>
+                <div class="mastery-card">
+                    <span class="level" style="background: #3b82f6; color: white;">Execution</span>
+                    <h3>Quantify Risk. Execute Flawlessly</h3>
+                    <p>The exact entry models used by funded traders. Learn to quantify your risk, remove emotion, and execute with precision.</p>
+                    <div class="mastery-tags">
+                        <span class="tag">RISK MANAGEMENT</span>
+                        <span class="tag">ENTRY MODELS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academy Section -->
+    <section class="academy" id="academy">
+        <div class="container">
+            <div class="academy-content">
+                <div class="academy-info">
+                    <h2>PipsLab Academy</h2>
+                    <p>Immersive training. Physical in Nairobi, Kenya & Online globally.</p>
+                    <p>Experience world-class forex education at our state-of-the-art physical campus in Nairobi, Kenya, or access the exact same elite curriculum globally online. Join traders from across the world.</p>
+                    <a href="#" class="btn-primary">Apply to Academy</a>
+                </div>
+                <div style="background: var(--gray-dark); padding: 3rem; border-radius: 15px; border: 1px solid var(--gray-medium);">
+                    <h3 style="color: var(--primary-green); margin-bottom: 1.5rem;">Why Choose PipsLab Academy?</h3>
+                    <ul style="list-style: none; line-height: 2.5;">
+                        <li>✓ World-class curriculum</li>
+                        <li>✓ Expert instructors</li>
+                        <li>✓ Hands-on trading sessions</li>
+                        <li>✓ Certification upon completion</li>
+                        <li>✓ Lifetime access to resources</li>
+                        <li>✓ Networking opportunities</li>
+                        <li>✓ Job placement assistance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coaching Section -->
+    <section class="coaching" id="one-on-one">
+        <div class="container">
+            <div class="coaching-content">
+                <h2>Private Coaching with PipsLab</h2>
+                <p style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.8;">
+                    Experience the ultimate in personalized trading education. Work directly with PipsLab in private, 
+                    customized sessions designed specifically for your trading goals and learning style.
+                </p>
+                <div class="coaching-features">
+                    <div class="coaching-feature">Private, personalized sessions</div>
+                    <div class="coaching-feature">Customized trading strategies for your goals</div>
+                    <div class="coaching-feature">One-on-one mentorship and guidance</div>
+                    <div class="coaching-feature">Real-time feedback on your trading decisions</div>
+                    <div class="coaching-feature">Advanced market analysis techniques</div>
+                    <div class="coaching-feature">Long-term trading career development</div>
+                    <div class="coaching-feature">Flexible scheduling to fit your needs</div>
+                </div>
+                <div class="pricing">
+                    <h3>Mentorship Fee</h3>
+                    <div class="amount">$2,000</div>
+                    <p style="color: var(--text-gray); margin-bottom: 2rem;">
+                        Includes: Initial strategy assessment, weekly 1-hour coaching calls, 
+                        24/7 access via private channel, custom trading plan development
+                    </p>
+                    <a href="https://t.me/PipsLabtradingSchool" class="btn-primary">Secure Your Spot</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Section -->
+    <section class="editorial">
+        <div class="container">
+            <div class="section-header">
+                <h2>Editorial</h2>
+                <p>View All Articles</p>
+            </div>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-content">
+                        <div class="article-category">Market Research</div>
+                        <div class="article-read-time">9 MIN READ</div>
+                        <h3>Can You Learn Forex Without Paying for a Course?</h3>
+                        <p>Can you really learn forex for free? Discover what YouTube and free resources can teach you, where beginners often get stuck, and when structured forex education can make all the difference.</p>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <div class="article-category">Psychology</div>
+                        <div class="article-read-time">4 MIN READ</div>
+                        <h3>Do You Really Need to Be Glued to the Charts All Day to Make Money From Forex?</h3>
+                        <p>Do you really need to spend hours staring at forex charts every day? This guide explains how successful traders focus on patience, quality setups, and disciplined execution.</p>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <div class="article-category">Market Research</div>
+                        <div class="article-read-time">9 MIN READ</div>
+                        <h3>How Long Does It Take to Become a Good Forex Trader?</h3>
+                        <p>Becoming a good forex trader takes more than time. Discover what really separates beginners from consistently improving traders, and why patience, discipline, and practice matter.</p>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <div class="article-category">Psychology</div>
+                        <div class="article-read-time">7 MIN READ</div>
+                        <h3>Why Chasing Money Is Holding You Back in Forex Trading</h3>
+                        <p>Chasing profits can turn even a good forex strategy into emotional trading. Learn how letting go of the pressure to get rich quickly can help you trade with more discipline.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Section -->
+    <section class="collaboration">
+        <div class="container">
+            <div class="collab-content">
+                <h2>Open for Collaboration</h2>
+                <p style="color: var(--text-gray); font-size: 1.2rem; margin-bottom: 1rem;">Align with Africa's Finest. Scale globally.</p>
+                <p style="color: var(--text-gray);">
+                    PipsLab represents absolute authority in the financial markets. We partner with elite brands, 
+                    tier-one brokers, and media platforms that align with uncompromised quality.
+                </p>
+                <div class="collab-types">
+                    <div class="collab-type">
+                        <h3>Corporate Branding</h3>
+                        <p style="color: var(--text-gray);">Sponsorships & official endorsements</p>
+                    </div>
+                    <div class="collab-type">
+                        <h3>Media Engagements</h3>
+                        <p style="color: var(--text-gray);">Podcasts, stages, and keynote speeches</p>
+                    </div>
+                </div>
+                <a href="https://t.me/PipsLabtradingSchool" class="btn-primary">Contact Admin on Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2>Knowledge Base</h2>
+                <p>Ask our AI assistant anything about PipsLab's courses and mentorship programs</p>
+            </div>
+            <div class="faq-search">
+                <input type="text" placeholder="Ask anything about PipsLab...">
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I access the PipsLab Academy courses?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Once you create an account on the PipsLab platform, all your purchased courses, from the Beginner Blueprint to the advanced Gold Digger strategy, will be instantly available in your personal learning dashboard.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are the strategies taught by PipsLab suitable for absolute beginners?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. The PipsLab Beginner Course is specifically designed to take you from zero market knowledge to executing your first trades safely, using the exact methodologies we use daily.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What exactly is included in the PipsLab Telegram Community?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        The VIP Telegram Community provides direct access to daily market breakdowns, precise trade setups, institutional-level analysis, and a network of dedicated traders who learn and grow together.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does the 1-on-1 Coaching program work?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Our 1-on-1 Coaching provides highly personalized mentorship. You get direct access for live chart reviews, tailored trading roadmaps, and deep psychological training to elevate your trading edge.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I access the PipsLab platform on my phone?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely. The PipsLab platform is fully responsive and optimized for mobile devices, allowing you to watch course videos, read market updates, and ask questions from anywhere in the world.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What makes the PipsLab approach to risk management different?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        At PipsLab, we prioritize capital preservation above all else. We teach proprietary position sizing, precise stop-loss placements, and strict drawdown limits to ensure you can trade sustainably long-term.
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="color: var(--text-gray); margin-bottom: 1rem;">Still have questions about our programs?</p>
+                <a href="https://t.me/PipsLabtradingSchool" class="btn-secondary">Contact Support</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>PipsLab Trading School</h3>
+                <p style="color: var(--text-gray); line-height: 1.8;">
+                    Where Serious Traders Grow. Based in Nairobi, Kenya, serving traders across 170+ countries.
+                </p>
+                <div class="social-links">
+                    <a href="https://t.me/PipsLabtradingSchool" title="Telegram">TG</a>
+                    <a href="#" title="Twitter">TW</a>
+                    <a href="#" title="Instagram">IG</a>
+                    <a href="#" title="YouTube">YT</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#gold-digger">Gold Digger Masterclass</a></li>
+                    <li><a href="#academy">Academy</a></li>
+                    <li><a href="#one-on-one">Private Coaching</a></li>
+                    <li><a href="#mastery">Mastery Courses</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Free Course</a></li>
+                    <li><a href="https://t.me/PipsLabtradingSchool">Telegram Community</a></li>
+                    <li><a href="#">Knowledge Base</a></li>
+                    <li><a href="#">Editorial</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Trading</h3>
+                <ul>
+                    <li><a href="https://one.exnesstrack.org/a/uhvsv3vp">Sign Up with Exness</a></li>
+                    <li><a href="#">Partner Code: uhvsv3vp</a></li>
+                    <li><a href="#">VIP Signals</a></li>
+                    <li><a href="#">Live Sessions</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PipsLab Trading School. All rights reserved. | Nairobi, Kenya</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                Trading forex involves significant risk. Past performance is not indicative of future results.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const symbol = question.querySelector('span:last-child');
+                
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    symbol.textContent = '+';
+                } else {
+                    answer.style.display = 'block';
+                    symbol.textContent = '−';
+                }
+            });
+        });
+
+        // Initialize FAQ answers as hidden
+        document.querySelectorAll('.faq-answer').forEach(answer => {
+            answer.style.display = 'none';
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+            alert('Mobile menu would open here. Add your mobile menu functionality.');
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.story-card, .course-card, .mastery-card, .article-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+  </html>
