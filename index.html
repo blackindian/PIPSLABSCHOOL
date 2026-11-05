@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TammzyFX | Forex classes and copy trading</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--a:#f5a623;--ad:#b87810;--ink:#111018;--dark:#0a0a14;--cream:#f5f1ea;--mute:#6b6862;--mono:'JetBrains Mono',ui-monospace,monospace;color-scheme:dark;box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:var(--dark);color:#fff;font:400 17px/1.55 'Plus Jakarta Sans',system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--a);outline-offset:3px}
+#bar{position:fixed;top:0;left:0;right:0;z-index:20;height:50px;padding-top:env(safe-area-inset-top,0px);background:var(--a);color:var(--ink);display:flex;align-items:center;gap:12px;padding-left:12px;padding-right:14px;font-weight:700;font-size:14px;box-sizing:content-box;border-bottom:2px solid var(--ad)}
+.bp{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--a);border-radius:30px;padding:7px 14px;font-size:12px;letter-spacing:.2em;white-space:nowrap}.bp i{width:8px;height:8px;border-radius:50%;background:var(--a)}
+.bt{flex:1;overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent);font-weight:500}
+#gmt{font-family:var(--mono);font-size:13px;white-space:nowrap}
+#nv{position:fixed;top:calc(62px + env(safe-area-inset-top,0px));left:14px;right:14px;z-index:20;max-width:1100px;margin:0 auto;background:#faf8f5;color:var(--ink);border-radius:60px;padding:10px 10px 10px 14px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.br{display:flex;align-items:center;gap:10px;font-weight:800;font-size:23px;letter-spacing:-.04em}.br em{color:var(--a);font-style:normal}
+.mk{width:40px;height:40px;border-radius:12px;background:linear-gradient(145deg,#1c1a28,#050509);display:grid;place-items:center;font-size:21px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--a);color:var(--ink);border:0;border-radius:40px;padding:14px 22px;font:700 16px 'Plus Jakarta Sans',sans-serif;box-shadow:0 5px 0 var(--ad);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--ad)}
+.btn.big{width:100%;padding:22px;font-size:20px;border-radius:50px}
+#stage{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 90% 55% at 50% 30%,#7a2f93 0,#3a1560 38%,#0a0a14 75%)}
+.giant{position:absolute;top:19vh;left:0;right:0;text-align:center;font-weight:800;font-size:min(17.5vw,230px);letter-spacing:-.05em;line-height:1;background:linear-gradient(#fff 25%,rgba(255,255,255,.25));-webkit-background-clip:text;background-clip:text;color:transparent}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+#dim{position:fixed;inset:0;z-index:2;background:var(--dark);opacity:0;pointer-events:none}
+main{position:relative;z-index:3}
+.hero{padding:62vh 16px 60px;max-width:720px;margin:0 auto}
+.badge{display:flex;justify-content:center;align-items:center;gap:10px;background:var(--a);color:var(--ink);border-radius:50px;padding:16px 18px;margin:0 22px;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 5px 0 var(--ad);position:relative;z-index:2;text-align:center}
+.badge i{width:10px;height:10px;border-radius:50%;background:var(--ink);flex:none}
+.c0{margin-top:-6px;background:rgba(245,243,240,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--ink);border-radius:40px;padding:34px 26px 26px}
+.av{display:flex;align-items:center;gap:12px;color:var(--mute);font-size:15px}.av b{color:var(--ink);font-weight:700}
+.av span{display:flex}.av span i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:22px;border:3px solid #fff;margin-left:-10px}.av span i:first-child{margin-left:0}
+h1{font-size:clamp(42px,9vw,64px);line-height:1;letter-spacing:-.05em;margin:22px 0 14px;font-weight:800}h1 em{color:var(--a);font-style:normal}
+.c0 p{color:var(--mute);font-size:19px;margin:0 0 24px}
+.sv{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px;color:var(--mute);font-weight:500}.sv b{background:var(--a);color:var(--ink);border-radius:20px;padding:6px 16px;box-shadow:0 3px 0 var(--ad)}
+.lg{text-align:center;color:var(--mute);margin:16px 0 0;font-size:15px}.lg a{color:var(--ink);font-weight:700;border-bottom:2px solid #ddd}
+.dk{background:var(--dark);padding:60px 16px 40px}
+.w{max-width:1000px;margin:0 auto}
+.sc{border-radius:40px;min-height:420px;margin-bottom:22px;padding:30px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.sc svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.sc>*{position:relative}
+.mt{font:500 22px var(--mono);color:var(--a);margin:0 0 6px}
+.sc h3,.h2{font-size:clamp(40px,9vw,64px);line-height:1;letter-spacing:-.05em;margin:0 0 10px;font-weight:800}
+.sc p{font-size:21px;color:rgba(255,255,255,.75);margin:0;max-width:520px}
+.cr{background:var(--cream);color:var(--ink);padding:70px 16px 40px}
+.cr .h2{color:var(--ink)}.cr .h2 s{text-decoration:none;color:#7b766c}
+.tp{display:flex;align-items:center;gap:12px;color:var(--mute);font-size:20px;font-weight:500;margin-bottom:22px}.tp b{background:var(--ink);color:var(--a);font:500 18px var(--mono);border-radius:30px;padding:9px 18px}
+.ul{height:5px;border-radius:5px;background:linear-gradient(90deg,#6f4dff,#e0449b,#ff7a1a,#ffb02e);margin:6px 0 40px;max-width:760px}
+.ft{display:flex;gap:18px;padding:26px 0;border-bottom:1px solid #ddd6ca}.ft:last-child{border:0}
+.ic{flex:none;width:64px;height:64px;border-radius:20px;background:#fff;display:grid;place-items:center;font-size:30px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.ft h3{margin:0 0 6px;font-size:26px;letter-spacing:-.03em}.ft p{margin:0;color:var(--mute);font-size:19px}
+.mc{background:#fff;border-radius:40px;padding:14px;margin-bottom:22px;box-shadow:0 10px 40px rgba(0,0,0,.06)}
+.mc .art{background:var(--cream);border-radius:28px}.mc svg{display:block;width:100%;height:auto}
+.mc .in{padding:18px 14px 12px}.mr{display:flex;justify-content:space-between;align-items:center}
+.mr .ic{width:56px;height:56px;border-radius:50%;background:var(--cream);box-shadow:none;font-size:26px}
+.mr code{background:var(--cream);border-radius:30px;padding:9px 18px;font:500 17px var(--mono);color:#444}
+.mc h3{font-size:32px;letter-spacing:-.04em;margin:18px 0 6px}.mc p{margin:0;color:var(--mute);font-size:19px}
+.fw{background:#fff;border-radius:40px;padding:22px;margin-bottom:22px}
+.fb{background:var(--cream);border-radius:30px;text-align:center;padding:36px 16px}.fb small{display:block;font-size:34px}.fb span{display:block;color:var(--mute);font-size:19px;margin:6px 0}.fb strong{display:block;font-size:56px;letter-spacing:-.05em;line-height:1.05}.fb em{font-style:normal;color:var(--mute)}
+.ar{text-align:center;font-size:28px;color:var(--mute);margin:8px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.two div{border-radius:30px;padding:26px 14px;text-align:center;background:var(--ink);color:#fff;font-size:18px}.two div:last-child{background:var(--a);color:var(--ink)}.two b{display:block;font:500 34px var(--mono);margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}.chips span{background:var(--cream);border-radius:30px;padding:14px 22px;font-size:19px;font-weight:500}
+.pr{padding:80px 16px 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;margin-top:34px;perspective:1000px}
+.pc{background:#14131f;border:1px solid #2a2840;border-radius:36px;padding:32px 28px;transition:transform .15s}
+.pc.pop{background:var(--a);color:var(--ink);border:0;box-shadow:0 7px 0 var(--ad)}
+.pc h3{margin:0 0 4px;font-size:28px;letter-spacing:-.03em}.pc p,.pc li{color:rgba(255,255,255,.7);margin:0 0 8px}.pc.pop p,.pc.pop li{color:rgba(17,16,24,.75)}
+.pc ul{padding-left:20px;margin:16px 0 22px}.price{font-size:56px;font-weight:800;letter-spacing:-.05em;line-height:1.1}.price small{font-size:16px;font-weight:500;letter-spacing:0;opacity:.7}
+.tag{display:inline-block;background:var(--ink);color:var(--a);font:700 12px 'Plus Jakarta Sans';letter-spacing:.15em;text-transform:uppercase;border-radius:20px;padding:6px 14px;margin-bottom:12px}
+.pc .btn{width:100%}.pc.pop .btn{background:var(--ink);color:#fff;box-shadow:0 5px 0 #000}
+form{display:grid;gap:14px;max-width:520px;margin-top:26px}
+input,select{padding:18px;border-radius:20px;border:1px solid #2a2840;background:#14131f;color:#fff;font:inherit}
+#ok{color:var(--a);min-height:1.4em}
+.sub{color:rgba(255,255,255,.65);font-size:20px;max-width:560px;margin:0}
+footer{padding:60px 16px 50px;color:rgba(255,255,255,.5);font-size:13px;max-width:1000px;margin:0 auto}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+@keyframes mq{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+.bt span{display:inline-block;animation:mq 22s linear infinite}
+@media(min-width:900px){.hero{padding-top:58vh}.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"><span class="bp"><i></i>PLANS</span><span class="bt"><span>Classes &amp; copy trading open — join monthly, cancel anytime</span></span><b id="gmt"></b></div>
+<header id="nv"><a class="br" href="#top"><span class="mk">🚀</span><span>TammzyFX<em>.</em></span></a><a class="btn" href="#pricing">Join · from <span id="mp"></span>/mo</a></header>
+<div id="stage"><div class="giant" aria-hidden="true">TAMMZYFX</div></div>
+<canvas id="gl" aria-hidden="true"></canvas><div id="dim"></div>
+<main id="top">
+<section class="hero">
+<div class="badge"><i></i>Now enrolling · Plans from <span id="mp2"></span>/mo</div>
+<div class="c0">
+<div class="av"><span><i style="background:#ffe1c2">🧑🏾</i><i style="background:#cdeedd">👩🏿</i><i style="background:#d9d6ff">🧑🏽</i><i style="background:#ffd3e2">👨🏾</i></span><div><b>Monthly plans</b> · cancel anytime</div></div>
+<h1>Trade smarter<em>.</em></h1>
+<p>Learn the TammzyFX method in live classes, or copy the trades automatically in your own account. One simple monthly plan.</p>
+<a class="btn big" href="#pricing">🎟️ Join today · from <span id="mp3"></span>/mo</a>
+<div class="sv"><b>Cancel anytime</b><span>Classes, copy trading or both</span></div>
+<p class="lg">Questions? <a href="#join">Message us</a></p>
+</div>
+</section>
+
+<div class="dk"><div class="w">
+<div class="sc rv" style="background:linear-gradient(160deg,#4a1a7a,#14061f)"><svg id="a1" viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice"></svg><div class="mt">01 · LEARN</div><h3>Learn the market.</h3><p>Live classes break down price action, risk and the plan behind every trade.</p></div>
+<div class="sc rv" style="background:linear-gradient(160deg,#0e5e66,#06141c)"><svg id="a2" viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice"></svg><div class="mt">02 · COPY</div><h3>Copy the trades.</h3><p>Link your broker account and mirror TammzyFX trades in proportion to your balance.</p></div>
+<div class="sc rv" style="background:linear-gradient(160deg,#8a5a10,#1a1006)"><svg id="a3" viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice"></svg><div class="mt">03 · GROW</div><h3>Grow with a plan.</h3><p>Review results each month, stay in control, and stop whenever you like.</p></div>
+</div></div>
+
+<div class="cr"><div class="w">
+<div class="tp rv"><b>01</b>What we teach</div>
+<h2 class="h2 rv">A structured approach to forex <s>built on clear setups, defined risk and patience.</s></h2>
+<div class="ul rv"></div>
+<div class="ft rv"><div class="ic">📐</div><div><h3>Structured</h3><p>One repeatable plan for every trade: read the market, plan the entry, manage the result.</p></div></div>
+<div class="ft rv"><div class="ic">🔍</div><div><h3>Focused on setups</h3><p>You learn what a real setup looks like and act only when your criteria are met.</p></div></div>
+<div class="ft rv"><div class="ic">🛡️</div><div><h3>Risk first</h3><p>Every trade has a stop and a target before it starts. No guessing, no chasing.</p></div></div>
+
+<div class="tp rv" style="margin-top:60px"><b>02</b>The method</div>
+<h2 class="h2 rv">Four moves.<br>One plan.</h2>
+<div class="mgrid" style="margin-top:30px">
+<div class="mc rv"><div class="art"><svg id="m1" viewBox="0 0 400 200"></svg></div><div class="in"><div class="mr"><div class="ic">🗺️</div><code>STEP 01</code></div><h3>Read the market</h3><p>Understand structure and the opportunity.</p></div></div>
+<div class="mc rv"><div class="art"><svg id="m2" viewBox="0 0 400 200"></svg></div><div class="in"><div class="mr"><div class="ic">🎯</div><code>STEP 02</code></div><h3>Plan the entry</h3><p>Execute only when your criteria are met.</p></div></div>
+<div class="mc rv"><div class="art"><svg id="m3" viewBox="0 0 400 200"></svg></div><div class="in"><div class="mr"><div class="ic">🚀</div><code>STEP 03</code></div><h3>Let price deliver</h3><p>Manage the trade with a stop and a target.</p></div></div>
+<div class="mc rv"><div class="art"><svg id="m4" viewBox="0 0 400 200"></svg></div><div class="in"><div class="mr"><div class="ic">✅</div><code>STEP 04</code></div><h3>Review and reset</h3><p>Log the result and learn from it.</p></div></div>
+</div>
+
+<div class="tp rv" style="margin-top:60px"><b>03</b>The framework</div>
+<h2 class="h2 rv">Direction.<br>Confluence.<br>Execution.</h2>
+<div class="fw rv" style="margin-top:30px">
+<div class="fb"><small>🧭</small><span>Direction</span><strong>Higher timeframe</strong><em>Daily bias</em></div><div class="ar">↓</div>
+<div class="fb"><small>🧩</small><span>Confluence</span><strong>Entry timeframe</strong><em>Setup validation</em></div><div class="ar">↓</div>
+<div class="fb"><small>🎯</small><span>Execution</span><strong>Planned entry</strong><em>Risk defined</em></div>
+<div class="two"><div>Classes<b>Weekly live</b></div><div>Copy trading<b>Automatic</b></div></div>
+</div>
+<div class="fw rv"><div style="color:var(--mute);font-size:19px">Technical foundation</div><h3 style="font-size:36px;letter-spacing:-.04em;margin:6px 0">Core price action <span style="color:#7b766c">principles</span></h3><div class="chips"><span>📈 Market structure</span><span>📏 Key levels</span><span>💧 Liquidity</span><span>🕯️ Candle confirmation</span></div></div>
+</div></div>
+
+<div class="dk pr" id="pricing"><div class="w">
+<div class="mt rv">MEMBERSHIP</div><h2 class="h2 rv">Monthly plans</h2><p class="sub rv">Pay month to month. Cancel anytime.</p>
+<div class="grid" id="plans"></div>
+</div></div>
+<div class="dk" id="join" style="padding-top:20px"><div class="w">
+<div class="mt rv">CONTACT</div><h2 class="h2 rv">Ready to begin?</h2><p class="sub rv">Tell us which plan you want and we will reply with next steps.</p>
+<form id="f"><input id="n" placeholder="Your name" required autocomplete="name"><input id="c" placeholder="WhatsApp number or email" required><select id="p"></select><button class="btn big" type="submit">Message TammzyFX</button><div id="ok" role="status"></div></form>
+</div></div>
+<footer>Trading forex and CFDs carries a high risk of loss and is not suitable for everyone. Past performance does not guarantee future results. TammzyFX provides education and trade copying tools, not financial advice. Only trade money you can afford to lose.<br><br>&copy; <span id="y"></span> TammzyFX</footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ===== EDIT HERE: pricing and contact. The page rebuilds itself from this. ===== */
+const CONFIG={
+  currency:"$",
+  whatsapp:"254700000000",
+  plans:[
+    {name:"Classes",price:49,blurb:"Learn the method",features:["Weekly live classes","Class recordings","Community chat"]},
+    {name:"Copy Trading",price:79,blurb:"Mirror live trades",features:["Auto trade copying","Monthly performance report","Setup help"],popular:true},
+    {name:"Elite Bundle",price:119,blurb:"Learn and copy together",features:["Everything in Classes","Everything in Copy Trading","Trade signals","1-on-1 monthly review"]}
+  ]
+};
+/* ================================================================================== */
+const $=id=>document.getElementById(id),rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+$('y').textContent=new Date().getFullYear();
+const low=CONFIG.currency+Math.min(...CONFIG.plans.map(p=>p.price));['mp','mp2','mp3'].forEach(i=>$(i).textContent=low);
+$('plans').innerHTML=CONFIG.plans.map(p=>`<div class="pc rv${p.popular?' pop':''}">${p.popular?'<span class="tag">Most popular</span>':''}<h3>${p.name}</h3><p>${p.blurb}</p><div class="price">${CONFIG.currency}${p.price}<small> / month</small></div><ul>${p.features.map(f=>`<li>${f}</li>`).join('')}</ul><a class="btn" href="#join" data-plan="${p.name}">Choose ${p.name}</a></div>`).join('');
+$('p').innerHTML=CONFIG.plans.map(p=>`<option>${p.name} (${CONFIG.currency}${p.price}/mo)</option>`).join('');
+document.querySelectorAll('[data-plan]').forEach(a=>a.onclick=()=>{[...$('p').options].forEach((o,i)=>{if(o.text.startsWith(a.dataset.plan))$('p').selectedIndex=i})});
+$('f').onsubmit=e=>{e.preventDefault();const t=`Hi TammzyFX, I'm ${$('n').value} (${$('c').value}). I want the ${$('p').value} plan.`;$('ok').textContent='Opening WhatsApp...';window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t)}`,'_blank')};
+const clk=()=>$('gmt').textContent=new Date().toISOString().slice(11,19)+' GMT';clk();setInterval(clk,1000);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.pc');document.querySelectorAll('.pc').forEach(k=>{if(k!==c)k.style.transform=''});if(!c||e.pointerType==='touch')return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg)`});
+
+/* illustrations */
+const G_='#16a34a',R_='#e5484d',kd=(x,t,b,c)=>`<line x1="${x}" x2="${x}" y1="${t-9}" y2="${b+9}" stroke="#888" stroke-width="2"/><rect x="${x-9}" y="${t}" width="18" height="${Math.max(6,b-t)}" rx="4" fill="${c}"/>`;
+const row=[[60,95,120,R_],[100,80,112,G_],[140,88,114,R_],[180,70,98,G_],[220,66,92,R_],[260,100,108,G_],[300,92,116,R_],[340,70,104,G_]];
+$('m1').innerHTML=`<rect x="40" y="52" width="320" height="100" rx="20" fill="#e9e5f6" stroke="#8b7bff" stroke-width="2" stroke-dasharray="7 6"/>`+row.map(r=>kd(...r)).join('')+`<text x="372" y="40" font-size="13" font-weight="700" fill="#6f4dff" text-anchor="end">HIGH</text><text x="372" y="176" font-size="13" font-weight="700" fill="#6f4dff" text-anchor="end">LOW</text>`;
+$('m2').innerHTML=`<line x1="30" x2="370" y1="80" y2="80" stroke="#f3a0ae" stroke-width="2" stroke-dasharray="7 6"/>`+row.slice(0,6).map(r=>kd(r[0]-10,r[1]+10,r[2]+16,r[3])).join('')+`<circle cx="300" cy="86" r="18" fill="#f8e3c0"/><circle cx="300" cy="86" r="9" fill="#f5a623"/><text x="332" y="76" font-size="14" font-weight="800" fill="#111">ENTRY</text>`;
+$('m3').innerHTML=`<line x1="30" x2="370" y1="40" y2="40" stroke="#f3a0ae" stroke-width="2" stroke-dasharray="7 6"/><line x1="30" x2="370" y1="160" y2="160" stroke="#7fcf9c" stroke-width="2" stroke-dasharray="7 6"/><polyline points="50,70 100,76 130,96 175,92 215,118 270,112 315,150" fill="none" stroke="#111" stroke-width="5" stroke-linejoin="round"/><circle cx="50" cy="70" r="9" fill="#f5a623"/><circle cx="322" cy="157" r="12" fill="${G_}"/><text x="360" y="30" font-size="13" font-weight="700" fill="${R_}" text-anchor="end">STOP</text><text x="360" y="184" font-size="13" font-weight="700" fill="${G_}" text-anchor="end">TARGET</text>`;
+$('m4').innerHTML=`<circle cx="200" cy="100" r="78" fill="#f7e8cf"/><circle cx="200" cy="100" r="52" fill="#fff" stroke="#111" stroke-width="13"/><line x1="200" y1="100" x2="200" y2="66" stroke="#f5a623" stroke-width="7" stroke-linecap="round"/><line x1="200" y1="100" x2="170" y2="100" stroke="#f5a623" stroke-width="7" stroke-linecap="round"/><circle cx="200" cy="100" r="7" fill="#111"/><circle cx="268" cy="150" r="10" fill="#f5a623"/>`;
+['a1','a2','a3'].forEach((id,k)=>{let s='';for(let i=0;i<9;i++){const h=60+i*22+(i*37+k*53)%40,x=30+i*42,y=380-h;s+=`<line x1="${x}" x2="${x}" y1="${y-24}" y2="380" stroke="#fff" stroke-opacity=".5" stroke-width="2"/><rect x="${x-12}" y="${y}" width="24" height="${h-20}" rx="5" fill="#fff" fill-opacity=".55"/>`}$(id).innerHTML=s});
+
+/* hero: rocket hovering over live candlesticks, dims as you scroll */
+const dim=$('dim'),stg=$('stage'),cv=$('gl');let vis=true;
+const onS=()=>{const y=scrollY,h=innerHeight;dim.style.opacity=Math.min(1,y/(h*.85))*.96;vis=y<h*1.4;cv.style.visibility=stg.style.visibility=vis?'visible':'hidden'};onS();addEventListener('scroll',onS,{passive:true});
+try{
+const R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});R.setPixelRatio(Math.min(devicePixelRatio,2));
+const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(45,1,.1,100);C.position.set(0,0,16);
+S.add(new THREE.AmbientLight(0x9a86c8,1));
+[[0xff5fd0,2.4,-6,6,8],[0xf5a623,2.2,6,5,8],[0x22c4bd,1.6,0,-6,6]].forEach(([c,i,x,y,z])=>{const l=new THREE.PointLight(c,i,70);l.position.set(x,y,z);S.add(l)});
+const G=new THREE.Group();S.add(G);
+const N=14,UP=new THREE.Color(0x22d3c5),DN=new THREE.Color(0xb06cff);let price=100;
+const mkc=f=>{const o=price,c=f?o:o+(Math.random()-.4)*3.2;price=c;return{o,c,h:Math.max(o,c)+Math.random()*1.2,l:Math.min(o,c)-Math.random()*1.2}};
+const ser=[],dsp=[],bod=[],wk=[];
+for(let i=0;i<N;i++){const c=mkc();ser.push(c);dsp.push({...c});
+const b=new THREE.Mesh(new THREE.BoxGeometry(.66,1,.66),new THREE.MeshStandardMaterial({color:UP,emissive:UP,emissiveIntensity:.45,metalness:.5,roughness:.3,transparent:true,opacity:.9}));
+const w=new THREE.Mesh(new THREE.BoxGeometry(.05,1,.05),new THREE.MeshBasicMaterial({color:0xfff0d0,transparent:true,opacity:.8}));G.add(b,w);bod.push(b);wk.push(w)}
+/* rocket */
+const RK=new THREE.Group();S.add(RK);
+const met=new THREE.MeshStandardMaterial({color:0xeceaf5,metalness:.85,roughness:.2}),nv=new THREE.MeshStandardMaterial({color:0x1b1450,metalness:.6,roughness:.3}),gd=new THREE.MeshStandardMaterial({color:0xf5a623,metalness:.9,roughness:.2,emissive:0x5a3500});
+RK.add(new THREE.Mesh(new THREE.CylinderGeometry(.42,.5,2,32),met));
+const ns=new THREE.Mesh(new THREE.ConeGeometry(.42,1.1,32),nv);ns.position.y=1.55;RK.add(ns);
+const rg=new THREE.Mesh(new THREE.TorusGeometry(.46,.05,10,32),gd);rg.rotation.x=Math.PI/2;rg.position.y=.7;RK.add(rg);
+const rg2=rg.clone();rg2.position.y=-.55;RK.add(rg2);
+const wn=new THREE.Mesh(new THREE.SphereGeometry(.2,20,20),new THREE.MeshStandardMaterial({color:0x22d3c5,emissive:0x22d3c5,emissiveIntensity:.9}));wn.position.set(0,.2,.4);RK.add(wn);
+for(let i=0;i<3;i++){const f=new THREE.Mesh(new THREE.BoxGeometry(.9,.8,.07),nv),a=i*Math.PI*2/3;f.position.set(Math.sin(a)*.52,-.85,Math.cos(a)*.52);f.rotation.y=a;RK.add(f)}
+const fl=new THREE.Mesh(new THREE.ConeGeometry(.34,1.6,20),new THREE.MeshBasicMaterial({color:0xff8a2a,transparent:true,opacity:.9}));fl.position.y=-1.8;fl.rotation.x=Math.PI;RK.add(fl);
+const f2=new THREE.Mesh(new THREE.ConeGeometry(.18,1,16),new THREE.MeshBasicMaterial({color:0xfff2c8}));f2.position.y=-1.55;f2.rotation.x=Math.PI;RK.add(f2);
+const gl=new THREE.PointLight(0xffa04a,2,8);gl.position.y=-2.4;RK.add(gl);
+const EN=70,em=new Float32Array(EN*3),eg=new THREE.BufferGeometry();eg.setAttribute('position',new THREE.BufferAttribute(em,3));
+S.add(new THREE.Points(eg,new THREE.PointsMaterial({color:0xffb866,size:.09,transparent:true,opacity:.85})));
+const sp=new Float32Array(500*3);for(let i=0;i<sp.length;i++)sp[i]=(Math.random()-.5)*60;
+const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.BufferAttribute(sp,3));S.add(new THREE.Points(sg,new THREE.PointsMaterial({color:0xffffff,size:.05,transparent:true,opacity:.7})));
+let off=0,tick=0,lo=90,hi=110,bx=0,by=0,rs=1,rx=1.8,ry=2.8;
+setInterval(()=>{const l=ser[N-1];if(++tick%6===0){ser.shift();ser.push(mkc(true));dsp.shift();dsp.push({...ser[N-1]});off=.95}else{l.c+=(Math.random()-.42)*1.1;price=l.c;l.h=Math.max(l.h,l.c);l.l=Math.min(l.l,l.c)}},700);
+const fit=()=>{R.setSize(innerWidth,innerHeight,false);const a=innerWidth/innerHeight;C.aspect=a;C.updateProjectionMatrix();const s=Math.min(1,13.25*a/14),land=a>1;G.scale.set(s,land?.62:s*1.7,s);by=land?-1.6:-1.5;G.position.set(0,by,-1);rs=land?1.1:Math.max(.62,.4+a*.7);rx=land?2.4:.6;ry=land?2.9:3.1;RK.scale.setScalar(rs)};fit();addEventListener('resize',fit);
+let mx=0;addEventListener('pointermove',e=>mx=e.clientX/innerWidth-.5);
+const t0=performance.now();
+(function loop(){requestAnimationFrame(loop);if(!vis)return;const t=rm?9:(performance.now()-t0)/1000;off*=.9;
+let a=1e9,b=-1e9;ser.forEach(c=>{a=Math.min(a,c.l);b=Math.max(b,c.h)});lo+=(a-lo)*.08;hi+=(b-hi)*.08;const k2=7/Math.max(1,hi-lo);
+for(let i=0;i<N;i++){const d=dsp[i],s=ser[i];['o','c','h','l'].forEach(k=>d[k]+=(s[k]-d[k])*.2);
+const e=Math.min(1,Math.max(0,(t-.3-i*.07)/1.1)),e3=1-Math.pow(1-e,3),Y=v=>(v-lo)*k2*e3,x=(i-N/2)*.95+off,up=d.c>=d.o,B=bod[i],W=wk[i],y1=Y(d.o),y2=Y(d.c),col=up?UP:DN;
+B.position.set(x,(y1+y2)/2,0);B.scale.y=Math.max(.06,Math.abs(y2-y1));B.material.color.copy(col);B.material.emissive.copy(col);B.material.emissiveIntensity=i===N-1?.7+Math.sin(t*6)*.3:.45;
+W.position.set(x,(Y(d.h)+Y(d.l))/2,0);W.scale.y=Math.max(.06,Y(d.h)-Y(d.l))}
+G.rotation.y=-.25+mx*.25;
+RK.position.set(rx+mx*.4,ry+Math.sin(t*1.5)*.22,.5);RK.rotation.z=-.32+Math.sin(t*1.1)*.05;RK.rotation.y=t*.55;
+const fs=.85+Math.sin(t*34)*.2;fl.scale.set(1,fs,1);f2.scale.set(1,fs*.9,1);gl.intensity=1.8+Math.sin(t*30)*.5;
+const ep=eg.attributes.position;for(let i=0;i<EN;i++){const ph=(t*.9+i/EN)%1;ep.setXYZ(i,RK.position.x-ph*1.1*rs*.5+Math.sin(i*12.9)*.3*(1+ph),RK.position.y-1.9*rs-ph*3.2,.5+Math.cos(i*7.3)*.3*(1+ph))}ep.needsUpdate=true;
+R.render(S,C)})();
+}catch(err){}
+</script>
+</body>
+</html>
