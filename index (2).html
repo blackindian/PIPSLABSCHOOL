@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PipsLab Trading School | Learn free. Trade smarter.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--p:#5b3fb0;--pd:#3a2486;--lav:#cbb6f5;--cream:#f3effa;--dark:#140c33;--ink:#120d24;--mute:#6a6486;--g:#16a34a;--r:#dc2626;--mono:'JetBrains Mono',ui-monospace,monospace;--tw:min(100vw,1100px);color-scheme:light;box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:130px}
+body{margin:0;background:var(--dark);color:var(--ink);font:400 17px/1.55 'Plus Jakarta Sans',system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--p);outline-offset:3px}
+#bar{position:fixed;top:0;left:0;right:0;z-index:30;height:calc(50px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 12px 0 12px;background:var(--p);color:#fff;display:flex;align-items:center;gap:12px;font-weight:600;font-size:14px;border-bottom:2px solid var(--pd)}
+.bp{display:flex;align-items:center;gap:8px;background:var(--dark);color:var(--lav);border-radius:30px;padding:7px 14px;font-size:12px;letter-spacing:.2em;white-space:nowrap;font-weight:800}.bp i{width:8px;height:8px;border-radius:50%;background:#46f0a8}
+.bt{flex:1;overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,#000 78%,transparent);mask-image:linear-gradient(90deg,#000 78%,transparent);font-weight:500}.bt span{display:inline-block;animation:mq 24s linear infinite}
+#gmt{font:500 13px var(--mono);white-space:nowrap}
+#nv{position:fixed;top:calc(62px + env(safe-area-inset-top,0px));left:14px;right:14px;max-width:1100px;margin:0 auto;z-index:30;background:#faf8ff;border-radius:60px;padding:9px 9px 9px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 12px 40px -10px rgba(20,12,51,.45)}
+.br{display:flex;align-items:center;gap:10px;font-weight:800;font-size:23px;letter-spacing:-.04em}.br em{color:var(--p);font-style:normal}
+.tile{width:42px;height:40px;border-radius:12px;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 3px 10px -4px rgba(0,0,0,.3)}.tile img{width:36px;height:auto}
+.lk{display:flex;gap:24px;font-weight:600;font-size:14px;color:var(--mute)}.lk a:hover{color:var(--p)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--p);color:#fff;border:0;border-radius:50px;padding:14px 22px;font:700 16px 'Plus Jakarta Sans',sans-serif;box-shadow:0 5px 0 var(--pd);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--pd)}.btn.big{width:100%;padding:22px;font-size:20px}.btn.w{background:#fff;color:var(--ink);box-shadow:0 5px 0 #cfc7e6}.btn.sm{padding:11px 20px;font-size:15px}
+#stage{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 90% 45% at 50% 32%,#3b1a8c 0%,#150a42 55%,#0b0626 100%)}
+.giant{position:absolute;top:calc(104px + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;font-weight:800;font-size:min(21vw,290px);letter-spacing:-.06em;line-height:1;background:linear-gradient(#fff 20%,rgba(255,255,255,.2));-webkit-background-clip:text;background-clip:text;color:transparent}
+#hl{position:absolute;left:50%;top:calc(150px + env(safe-area-inset-top,0px));width:var(--tw);transform:translateX(-50%)}
+.logo{position:relative;width:100%;aspect-ratio:720/669;animation:fl 6s ease-in-out infinite}
+.logo img{position:absolute;inset:0;width:100%;height:100%}
+.art{position:relative;width:100%}.art svg{display:block;width:100%;height:auto;overflow:visible}
+#lc{position:absolute;left:0;right:0;top:22%;height:55%;width:100%;opacity:.26}
+.cdl{transform-box:fill-box;transform-origin:50% 100%}.gl{animation:gp 2.4s ease-in-out infinite}
+.ch{transform-box:fill-box;transform-origin:50% 100%}.bull{animation:br 4s ease-in-out infinite}.bear{animation:br 4s ease-in-out -2s infinite}
+.eye{transform-box:fill-box;transform-origin:center;animation:bl 5s infinite}
+.bb.g{background:radial-gradient(circle at 30% 30%,#e0ffe9,#22c55e 60%);box-shadow:0 0 14px 2px rgba(34,197,94,.8)}.bb.r{background:radial-gradient(circle at 30% 30%,#ffe3e3,#ef4444 60%);box-shadow:0 0 14px 2px rgba(239,68,68,.8)}
+@keyframes br{50%{transform:translateY(-6px) scale(1.012)}}@keyframes gp{50%{opacity:.5}}@keyframes bl{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.bb{position:absolute;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 30% 30%,#c4f7d3,#2fb457 55%,#1a8a40)}
+#dim{position:fixed;inset:0;z-index:2;background:var(--dark);opacity:0;pointer-events:none}
+main{position:relative;z-index:3}
+.hero{max-width:680px;margin:0 auto;padding:calc(150px + env(safe-area-inset-top,0px) + var(--tw)*.563 - 44px) 16px 70px}
+.badge{display:flex;justify-content:center;align-items:center;gap:10px;background:var(--p);color:#fff;border-radius:50px;padding:16px 18px;margin:0 22px;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 5px 0 var(--pd);position:relative;z-index:2;text-align:center}.badge i{width:10px;height:10px;border-radius:50%;background:#46f0a8;flex:none}
+.c0{margin-top:-6px;background:rgba(246,243,252,.97);border-radius:40px;padding:34px 26px 26px}
+.av{display:flex;align-items:center;gap:12px;color:var(--mute);font-size:15px}.av b{color:var(--ink)}
+.av span{display:flex}.av i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:22px;border:3px solid #fff;margin-left:-10px}.av i:first-child{margin-left:0}
+h1{font-size:clamp(40px,10.5vw,62px);line-height:1;letter-spacing:-.05em;margin:20px 0 14px;font-weight:800}h1 em{color:var(--p);font-style:normal}
+.c0 p{color:var(--mute);font-size:19px;margin:0 0 24px}
+.sv{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px;color:var(--mute);font-weight:500;font-size:15px}.sv b{background:var(--p);color:#fff;border-radius:20px;padding:6px 16px;box-shadow:0 3px 0 var(--pd)}
+.lg{text-align:center;color:var(--mute);margin:16px 0 0!important;font-size:15px!important}.lg a{color:var(--ink);font-weight:700;border-bottom:2px solid #d6cdee}
+.w{max-width:1040px;margin:0 auto}
+.dk{background:var(--dark);padding:60px 16px 30px}
+.sc{border-radius:40px;min-height:430px;margin-bottom:22px;padding:30px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;color:#fff}
+.sc svg{position:absolute;inset:0;width:100%;height:100%;opacity:.45}.sc>*{position:relative}
+.mt{font:500 21px var(--mono);color:var(--lav);margin:0 0 6px}
+.sc h3,.h2{font-size:clamp(40px,9vw,66px);line-height:1;letter-spacing:-.05em;margin:0 0 12px;font-weight:800}
+.sc p{font-size:20px;color:rgba(255,255,255,.78);margin:0;max-width:480px}
+.cr{background:var(--cream);padding:70px 16px 40px}
+.tp{display:flex;align-items:center;gap:12px;color:var(--mute);font-size:19px;font-weight:500;margin-bottom:22px}.tp b{background:var(--dark);color:var(--lav);font:500 17px var(--mono);border-radius:30px;padding:9px 18px}
+.h2 s{text-decoration:none;color:#8a84a6}
+.ul{height:5px;border-radius:5px;background:linear-gradient(90deg,#6f4dff,#e0449b,#ff7a1a);margin:8px 0 36px;max-width:720px}
+.dial{display:grid;place-items:center;margin:20px 0 10px}.dial svg{width:min(86vw,360px);height:auto}
+.leg{display:grid;gap:10px;margin:8px 0 34px;font-size:17px}.leg div{display:flex;align-items:center;gap:14px}.leg i{width:46px;height:8px;border-radius:6px}
+.ft{display:flex;gap:18px;padding:26px 0;border-bottom:1px solid #ddd6ee}.ft:last-of-type{border:0}
+.ic{flex:none;width:64px;height:64px;border-radius:20px;background:#fff;display:grid;place-items:center;font-size:30px;box-shadow:0 4px 16px rgba(58,36,134,.08)}
+.ft h3{margin:0 0 6px;font-size:26px;letter-spacing:-.03em}.ft p{margin:0;color:var(--mute);font-size:18px}
+.cc{background:#fff;border-radius:40px;padding:22px;margin:20px 0;box-shadow:0 10px 40px rgba(58,36,134,.08)}
+.pill{display:inline-flex;align-items:center;gap:10px;background:var(--cream);border-radius:30px;padding:10px 20px;font-weight:700}.pill i{width:12px;height:12px;border-radius:50%;background:var(--g)}
+#ch{display:block;width:100%;height:230px;margin-top:10px}
+.ls{background:linear-gradient(180deg,#1b1145,#2c1b69);color:#fff;padding:70px 16px 60px}
+.ls .tp{color:#c9bfee}.ls .tp b{background:rgba(255,255,255,.12)}.ls .sub{color:#c9bfee;font-size:19px;max-width:540px;margin:0}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ring{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);border-radius:60px;padding:10px 22px 10px 12px;font-weight:700}.ring small{display:block;font-weight:500;color:#c9bfee}.ring svg{width:56px;height:56px;transform:rotate(-90deg)}
+.fl{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 4px}.fl button{border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;border-radius:30px;padding:10px 20px;font:600 15px 'Plus Jakarta Sans';cursor:pointer}.fl button.on{background:#fff;color:var(--dark);border-color:#fff}
+.lgd{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:20px}
+.lc{position:relative;text-align:left;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);border-radius:28px;padding:24px;color:#fff;font:inherit;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
+.lc:hover{transform:translateY(-4px);background:rgba(255,255,255,.12);border-color:#b8a2ff}
+.lc .n{font:500 13px var(--mono);letter-spacing:.1em;color:var(--lav)}.lc .e{font-size:34px;display:block;margin:8px 0}.lc h3{margin:0 0 6px;font-size:20px;letter-spacing:-.02em}.lc .m{font-size:14px;color:#c9bfee}
+.lc .ck{position:absolute;right:18px;top:18px;width:30px;height:30px;border-radius:50%;border:2px solid rgba(255,255,255,.3);display:grid;place-items:center;font-size:16px}.lc.done .ck{background:var(--g);border-color:var(--g)}
+.lv{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-top:10px;background:rgba(124,92,224,.5)}.lv.Beginner{background:rgba(22,163,74,.35)}.lv.Advanced{background:rgba(220,38,38,.35)}
+dialog{border:0;padding:0;width:100%;max-width:640px;max-height:92vh;margin:auto 0 0;border-radius:36px 36px 0 0;background:#fff;color:var(--ink);overflow:auto}dialog::backdrop{background:rgba(20,10,50,.65);backdrop-filter:blur(4px)}
+@media(min-width:700px){dialog{margin:auto;border-radius:36px}}
+.dh{padding:28px 28px 10px}.dh .x{float:right;border:0;background:var(--cream);width:42px;height:42px;border-radius:50%;font-size:22px;cursor:pointer}.dh h3{font-size:32px;letter-spacing:-.04em;line-height:1.05;margin:10px 0}
+.db{padding:0 28px 28px}.db p{color:var(--mute);font-size:18px}.db ul{padding-left:20px;margin:10px 0 20px}.db li{margin-bottom:6px}
+.qz{background:var(--cream);border-radius:24px;padding:20px;margin:18px 0}.qz b{display:block;margin-bottom:12px}
+.qz button{display:block;width:100%;text-align:left;margin-bottom:8px;border:2px solid transparent;background:#fff;border-radius:16px;padding:13px 16px;font:600 16px 'Plus Jakarta Sans';cursor:pointer}.qz button.ok{border-color:var(--g);background:#e5f7eb}.qz button.no{border-color:var(--r);background:#fdeaea}
+.da{display:flex;gap:10px;flex-wrap:wrap}
+.mc{background:#fff;border-radius:40px;padding:14px;margin-bottom:22px;box-shadow:0 10px 40px rgba(58,36,134,.07)}
+.mc .art{background:var(--cream);border-radius:28px}.mc svg{display:block;width:100%;height:auto}
+.mc .in{padding:18px 14px 12px}.mr{display:flex;justify-content:space-between;align-items:center}.mr .ic{width:56px;height:56px;border-radius:50%;background:var(--cream);box-shadow:none;font-size:26px}
+.mr code{background:var(--cream);border-radius:30px;padding:9px 18px;font:500 16px var(--mono);color:#555}.mc h3{font-size:32px;letter-spacing:-.04em;margin:18px 0 6px}.mc p{margin:0;color:var(--mute);font-size:19px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 30px}.two a{border-radius:32px;padding:28px 14px;text-align:center;background:var(--dark);color:#fff;font-size:17px}.two a:last-child{background:var(--p)}.two b{display:block;font:500 28px var(--mono);margin-top:6px}
+.big{display:block}
+.pc{border-radius:44px;padding:44px 28px;margin-top:20px}
+.pc.ch{background:linear-gradient(150deg,#cbb6f5,#e6dcfb)}.pc.vip{background:linear-gradient(150deg,#5b3fb0,#3a2486);color:#fff}.pc.hp{background:#fff}
+.pc p{font-size:19px;margin:0;max-width:540px}.pc.vip p{color:#ddd3fb}.pc small{display:block;margin-top:16px;color:#c9bfee;font-size:13px}.pc .btn{margin-top:24px}.pc.vip .btn{background:#fff;color:var(--p);box-shadow:0 5px 0 #b9a8ea}
+.chat{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;width:68px;height:68px;border-radius:50%;background:var(--p);display:grid;place-items:center;box-shadow:0 14px 30px -8px rgba(91,63,176,.9)}
+footer{background:var(--dark);color:rgba(255,255,255,.55);padding:60px 16px 120px;font-size:13px}footer .w{max-width:1040px}footer a{color:#fff;font-weight:700}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+#hi{display:block;width:100%;height:auto;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 80%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 80%,transparent 100%)}
+@media(min-width:1140px){#hi{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 80%,transparent 100%),linear-gradient(to right,transparent 0,#000 7%,#000 93%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 80%,transparent 100%),linear-gradient(to right,transparent 0,#000 7%,#000 93%,transparent 100%);mask-composite:intersect}}
+.gw{position:absolute;pointer-events:none;mix-blend-mode:screen;animation:gp 3s ease-in-out infinite}.gl1{left:0;top:30%;width:46%;height:62%;background:radial-gradient(ellipse,rgba(34,197,94,.38),transparent 66%)}.gl2{right:0;top:30%;width:46%;height:62%;background:radial-gradient(ellipse,rgba(239,68,68,.38),transparent 66%);animation-delay:-1.5s}
+@keyframes push{to{transform:scale(1.035)}}
+.tilt{transition:transform .25s ease-out;will-change:transform}.logo img:first-of-type{animation:pop 1s cubic-bezier(.2,.8,.2,1) both}
+.pip{position:absolute;z-index:3;padding:4px 11px;border-radius:20px;font:700 12px 'Plus Jakarta Sans';background:#fff;box-shadow:0 6px 16px -6px rgba(0,0,0,.35);pointer-events:none}.pip.u{color:#16a34a}.pip.d{color:#dc2626}
+@keyframes sl{0%,100%{transform:rotate(-5deg) translateY(2%)}50%{transform:rotate(5deg) translateY(-3%)}}@keyframes gl{50%{opacity:.45;transform:scale(1.08)}}@keyframes pop{from{opacity:0;transform:scale(.9)}}
+@keyframes sw{0%,100%{transform:perspective(900px) rotateY(-4deg) rotateX(2deg)}50%{transform:perspective(900px) rotateY(4deg) rotateX(-2deg)}}
+@media(hover:none){.tilt{animation:sw 7s ease-in-out infinite}}
+.adc{position:relative;background:#fff;color:var(--ink);border-radius:28px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(20,12,51,.6);display:flex}
+#adp{position:fixed;left:12px;right:12px;bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:40;max-width:440px;margin:0 auto;animation:adin .5s cubic-bezier(.2,.8,.2,1)}#adp[hidden]{display:none}
+.ada{flex:none;width:96px;display:grid;place-items:center;font-size:42px;background:linear-gradient(150deg,var(--c1,#5b3fb0),var(--c2,#8a63f0))}.ada img{width:100%;height:100%;object-fit:cover}
+.adb{padding:16px 18px 20px;min-width:0}.adg{font:800 11px 'Plus Jakarta Sans';letter-spacing:.14em;text-transform:uppercase;color:var(--p)}
+.adb h3{margin:4px 28px 4px 0;font-size:20px;line-height:1.15;letter-spacing:-.03em}.adb p{margin:0 0 8px;color:var(--mute);font-size:15px;line-height:1.4}
+.adw[hidden]{display:none}.adw{font:500 13px var(--mono);background:var(--cream);display:inline-block;border-radius:20px;padding:4px 12px;margin-bottom:10px}
+.adx{position:absolute;right:8px;top:8px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(20,12,51,.08);font-size:20px;cursor:pointer}
+.adbar{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(91,63,176,.15)}.adbar i{display:block;height:100%;width:100%;background:var(--p)}
+.adgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px}
+.adcard{background:#fff;border-radius:36px;overflow:hidden;box-shadow:0 10px 40px rgba(58,36,134,.07);display:flex;flex-direction:column}.adcard .ada{width:100%;height:150px;font-size:56px}.adcard .adb{padding:20px 22px 24px}.adcard h3{margin-right:0}
+@keyframes adin{from{opacity:0;transform:translateY(30px)}}
+.adc.poster{display:block;background:#000}.adc.poster .ada,.adc.poster .adb{display:none}.adpo{display:none}.adc.poster .adpo{display:block}.adpo img{display:block;width:100%;height:auto;max-height:68vh;object-fit:contain;background:#fff}
+.adc.poster .adx{background:rgba(0,0,0,.6);color:#fff;z-index:2}.adc.poster .adbar{z-index:2}
+.adlab{position:absolute;left:10px;top:10px;z-index:2;background:rgba(0,0,0,.6);color:#fff;font:700 11px 'Plus Jakarta Sans';letter-spacing:.08em;padding:4px 10px;border-radius:20px}
+.adcard.poster{position:relative;display:block;border-radius:32px;overflow:hidden;background:#fff}.adcard.poster img{display:block;width:100%;height:auto}
+.eaf label{display:block;font-weight:700;margin:14px 0 6px;font-size:14px}.eaf input:not([type=checkbox]),.eaf select{width:100%;padding:14px;border:1px solid #d9d2ee;border-radius:14px;font:inherit;background:#fff}
+.eaf .chk{display:flex;gap:10px;align-items:flex-start;font-weight:500;line-height:1.4}.eaf .chk input{width:20px;height:20px;margin-top:2px;flex:none}.eaf .btn.big{margin-top:16px}
+#eamsg{margin-top:12px;font-weight:600;line-height:1.45}#eamsg.ok{color:#166534}#eamsg.no{color:#b91c1c}.eaf .hint{color:var(--mute);font-size:13px}
+@keyframes mq{from{transform:translateX(100%)}to{transform:translateX(-100%)}}@keyframes fl{50%{transform:translateY(-8px)}}
+@keyframes gb{50%{transform:translateY(-6%) scaleY(1.1)}}@keyframes rb{50%{transform:translateY(5%) scaleY(.9)}}
+@media(max-width:820px){.lk{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"><span class="bp"><i></i>FREE</span><span class="bt"><span>Free classes on Telegram — join the PipsLab community today</span></span><b id="gmt"></b></div>
+<header id="nv"><a class="br" href="#top" aria-label="PipsLab home"><span class="tile"><img src="data:image/webp;base64,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" alt="" width="128" height="121"></span>PipsLab<em>.</em></a><nav class="lk" aria-label="Main"><a href="#teach">About</a><a href="#lessons">Lessons</a><a href="#path">The path</a><a href="#ea">Auto-trade</a><a href="#join">Join</a></nav><a class="btn sm" data-l="tg">Join free</a></header>
+<div id="stage"><div class="giant" aria-hidden="true">PIPSLAB</div><div id="hl"><div class="tilt" id="tl"><div class="art" id="lgb"><video id="hi" poster="hero-poster.webp" autoplay muted loop playsinline preload="metadata" disablepictureinpicture aria-label="A glowing laboratory scene with flasks and rising bubbles"><source src="hero.mp4" type="video/mp4"></video></div></div></div></div>
+<div id="dim"></div>
+<main id="top">
+<section class="hero">
+<div class="badge"><i></i>Free classes · Telegram</div>
+<div class="c0">
+<div class="av"><span><i style="background:#ffe1c2">🧑🏾</i><i style="background:#cdeedd">👩🏿</i><i style="background:#d9d6ff">🧑🏽</i><i style="background:#ffd3e2">👨🏾</i></span><div><b>Free to join</b> · learn at your pace</div></div>
+<h1>Learn free<em>.</em><br>Trade smarter<em>.</em></h1>
+<p>Master forex step by step with PipsLab Trading School. Free classes on Telegram, free VIP signals and a trading challenge to prove your skill.</p>
+<a class="btn big" data-l="tg">✈️ Join the free classes</a>
+<div class="sv"><b>Free classes</b><span>Learn on Telegram</span></div>
+<p class="lg">Want it automated? <a href="#ea">Subscribe to the EA</a></p>
+<p class="lg">Want free VIP signals? <a data-l="ex">Sign up with Exness</a></p>
+</div>
+</section>
+
+<div class="dk"><div class="w">
+<div class="sc rv" style="background:linear-gradient(160deg,#6a47cf,#1a0f45)"><svg id="a1" viewBox="0 0 400 430" preserveAspectRatio="xMidYMid slice"></svg><div class="mt">01 · LEARN</div><h3>Start from zero.</h3><p>Free classes take you from your first candle to your first trading plan.</p></div>
+<div class="sc rv" style="background:linear-gradient(160deg,#1f8a5a,#0b1e2e)"><svg id="a2" viewBox="0 0 400 430" preserveAspectRatio="xMidYMid slice"></svg><div class="mt">02 · SIGNALS</div><h3>Trade with VIP signals.</h3><p>Open your Exness account with our link to unlock free VIP signals.</p></div>
+<div class="sc rv" style="background:linear-gradient(160deg,#a33c9a,#2a0f45)"><svg id="a3" viewBox="0 0 400 430" preserveAspectRatio="xMidYMid slice"></svg><div class="mt">03 · COMPETE</div><h3>Prove your skill.</h3><p>Join the trading challenge where percentage growth decides the ranking.</p></div>
+</div></div>
+
+<div class="cr" id="teach"><div class="w">
+<div class="tp rv"><b>01</b>What we teach</div>
+<h2 class="h2 rv">A structured way to learn forex <s>built on clear setups, defined risk and patience.</s></h2><div class="ul rv"></div>
+<div class="dial rv"><svg viewBox="0 0 360 360" aria-label="Nine free lessons across three levels"><circle cx="180" cy="180" r="170" fill="#fff"/><circle cx="180" cy="180" r="100" fill="none" stroke="#ddd6ee" stroke-width="2" stroke-dasharray="2 9"/><g fill="none" stroke-width="22" stroke-linecap="round" transform="rotate(-90 180 180)"><circle cx="180" cy="180" r="130" stroke="#16a34a" stroke-dasharray="320 817"/><circle cx="180" cy="180" r="130" stroke="#5b3fb0" stroke-dasharray="230 817" stroke-dashoffset="-345"/><circle cx="180" cy="180" r="130" stroke="#dc2626" stroke-dasharray="150 817" stroke-dashoffset="-600"/></g><text x="180" y="205" text-anchor="middle" font-size="100" font-weight="800" fill="#120d24" letter-spacing="-4">9</text><text x="180" y="240" text-anchor="middle" font-size="14" font-weight="700" fill="#6a6486" letter-spacing="3">FREE LESSONS</text></svg></div>
+<div class="leg rv"><div><i style="background:#16a34a"></i>Beginner · 4 lessons</div><div><i style="background:#5b3fb0"></i>Intermediate · 3 lessons</div><div><i style="background:#dc2626"></i>Advanced · 2 lessons</div></div>
+<div class="ft rv"><div class="ic">📐</div><div><h3>Structured</h3><p>One repeatable plan for every trade: read the market, plan the entry, manage the result.</p></div></div>
+<div class="ft rv"><div class="ic">🔍</div><div><h3>Beginner friendly</h3><p>No jargon wall. You start with what a candle is and build up one lesson at a time.</p></div></div>
+<div class="ft rv"><div class="ic">🛡️</div><div><h3>Risk first</h3><p>Every trade has a stop and a target before it starts. No guessing, no chasing.</p></div></div>
+<div class="cc rv"><span class="pill"><i></i>See the market move · live demo (simulated)</span><canvas id="ch" aria-label="Animated candlestick chart"></canvas></div>
+</div></div>
+
+<div class="ls" id="lessons"><div class="w">
+<div class="top"><div><div class="tp"><b>02</b>The lessons</div><h2 class="h2">Learn at your pace</h2><p class="sub">Tap a lesson, read the key points, test yourself and mark it done. Full video classes are free on Telegram.</p></div>
+<div class="ring"><svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="23" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="6"/><circle id="rc" cx="28" cy="28" r="23" fill="none" stroke="#3ddc84" stroke-width="6" stroke-linecap="round" stroke-dasharray="144.5" stroke-dashoffset="144.5" style="transition:stroke-dashoffset .6s"/></svg><div><span id="rt">0 of 0</span><small>lessons done</small></div></div></div>
+<div class="fl" id="fl" role="tablist"></div><div class="lgd" id="lg2"></div>
+</div></div>
+
+<div class="cr" id="path" style="padding-top:80px"><div class="w">
+<div class="tp rv"><b>03</b>The path</div><h2 class="h2 rv">Four steps.<br>One school.</h2>
+<div style="margin-top:30px">
+<div class="mc rv"><div class="art"><svg id="m1" viewBox="0 0 400 190"></svg></div><div class="in"><div class="mr"><div class="ic">✈️</div><code>STEP 01</code></div><h3>Join the free classes</h3><p>Learn in the PipsLab Telegram community.</p></div></div>
+<div class="mc rv"><div class="art"><svg id="m2" viewBox="0 0 400 190"></svg></div><div class="in"><div class="mr"><div class="ic">🎓</div><code>STEP 02</code></div><h3>Study the lessons</h3><p>Work through the lessons and test yourself.</p></div></div>
+<div class="mc rv"><div class="art"><svg id="m3" viewBox="0 0 400 190"></svg></div><div class="in"><div class="mr"><div class="ic">⭐</div><code>STEP 03</code></div><h3>Get VIP signals</h3><p>Sign up with our Exness link and unlock free signals.</p></div></div>
+<div class="mc rv"><div class="art"><svg id="m4" viewBox="0 0 400 190"></svg></div><div class="in"><div class="mr"><div class="ic">🏆</div><code>STEP 04</code></div><h3>Enter the challenge</h3><p>Test your skill. Ranked by percentage growth.</p></div></div>
+</div>
+<div class="two rv"><a data-l="tg">Classes<b>Free</b></a><a data-l="ex">VIP signals<b>Free</b></a></div>
+<div class="pc ch rv" id="challenge"><div class="tp" style="color:#4b4470"><b>04</b>The challenge</div><h2 class="h2">Any balance. Best growth wins.</h2><p style="color:#4b4470">Rankings use percentage growth from your own starting balance, so skill decides, not account size.</p><a class="btn" data-l="ch">Open the challenge site</a></div>
+<div class="pc vip rv" id="signals"><h2 class="h2">Free VIP signals.</h2><p>Create your Exness account with the PipsLab link to unlock free VIP signals.</p><a class="btn" data-l="ex">Sign up with Exness</a><small>This is a partner link. PipsLab may earn a commission at no extra cost to you.</small></div>
+<div class="pc hp rv" id="join"><h2 class="h2">Need a hand?</h2><p style="color:var(--mute)">For assistance and copy trading, message us directly on Telegram.</p><a class="btn" data-l="owner">Message PipsLab</a></div>
+</div></div>
+<div class="cr" id="ea" style="padding-top:80px"><div class="w">
+<div class="tp rv"><b>EA</b>Automated trading</div><h2 class="h2 rv">Let our EA trade for you.</h2>
+<p class="rv" style="font-size:19px;color:var(--mute);max-width:560px;margin:0 0 24px">Subscribe and our trading robot runs on your own MT5 account from a secure server. Your money stays with your broker.</p>
+<div class="ft rv"><div class="ic">📝</div><div><h3>1. Subscribe</h3><p>Send your MT5 details below and pick a plan.</p></div></div>
+<div class="ft rv"><div class="ic">💳</div><div><h3>2. Pay</h3><p>Pay using the instructions shown after you subscribe. We confirm your payment.</p></div></div>
+<div class="ft rv"><div class="ic">🤖</div><div><h3>3. We switch it on</h3><p>We start the EA on your account. Stop rules and a kill switch that closes every trade are built in.</p></div></div>
+<form id="eaf" class="cc eaf" autocomplete="off" novalidate><h2 style="margin:0 0 6px">Subscribe to the EA</h2><p id="eainfo" class="hint">Loading plans…</p>
+<label>Plan</label><select name="plan" id="eap"></select>
+<label>Full name</label><input name="name" required maxlength="80" autocomplete="name">
+<label>WhatsApp or Telegram</label><input name="contact" required maxlength="60" placeholder="+254… or @username">
+<label>Email <small>(optional)</small></label><input name="email" type="email" maxlength="100">
+<label>MT5 account number</label><input name="login" inputmode="numeric" pattern="[0-9]{4,12}" required placeholder="e.g. 12345678">
+<label>Broker server</label><input name="server" required maxlength="60" placeholder="e.g. Exness-MT5Real">
+<label>MT5 master (trading) password</label><input name="password" type="password" required maxlength="64" autocomplete="new-password">
+<label>Payment reference <small>(optional, add it after you pay)</small></label><input name="pay_ref" maxlength="60">
+<input name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+<label class="chk"><input type="checkbox" name="consent" value="1" required><span>I allow PipsLab to trade my MT5 account with its EA. I understand trading is risky, I can lose money and no profit is promised. I can end access any time by changing my MT5 password.</span></label>
+<button class="btn big" id="eab" type="submit">Subscribe</button><div id="eamsg" role="status"></div>
+<p class="hint">Your password is encrypted the moment it reaches our server and is stored only in encrypted form. Our website admins cannot read it. Use a dedicated account and only the money you can afford to risk.</p></form>
+</div></div>
+<div class="cr" id="events" hidden><div class="w"><div class="tp"><b>05</b>Events &amp; partners</div><h2 class="h2">Don’t miss out</h2><div class="adgrid" id="adg2"></div></div></div>
+</main>
+<a class="chat" data-l="owner" aria-label="Message PipsLab on Telegram for help and copy trading"><svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-5 4V5a2 2 0 0 1 2-2z"/></svg></a>
+<div id="adp" role="dialog" aria-live="polite" aria-label="Advertisement" hidden><div class="adc" id="adc"><button class="adx" id="adx" aria-label="Close ad">×</button><span class="adlab" id="adlab" hidden></span><a class="adpo" id="adpo" target="_blank" rel="noopener"><img id="adpi" alt=""></a><div class="ada" id="ada"></div><div class="adb"><span class="adg" id="adg"></span><h3 id="adt"></h3><p id="adtx"></p><span class="adw" id="adw" hidden></span><div><a class="btn sm" id="adl" target="_blank" rel="noopener"></a></div></div><div class="adbar" id="adbar"><i id="adi"></i></div></div></div>
+<dialog id="dlg" aria-labelledby="dt"><div class="dh"><button class="x" id="dx" aria-label="Close">×</button><span class="lv" id="dl"></span><h3 id="dt"></h3></div><div class="db" id="dbd"></div></dialog>
+<footer><div class="w">Forex and CFD trading carries a high risk of loss and is not suitable for everyone. Lessons are education only, not financial advice. Past results do not guarantee future results. Only trade money you can afford to lose.<br><br>Free classes: <a data-l="tg">Telegram</a> · Help and copy trading: <a data-l="owner">Telegram</a> · <a data-l="ch">Trading challenge</a><br><br>&copy; <span id="y"></span> PipsLab Trading School</div></footer>
+
+<script>
+/* ===== EDIT HERE: links and lessons ===== */
+const LINKS={tg:"https://t.me/PipsLabtradingSchool",owner:"https://t.me/PIPSLABOWNER",ch:"https://pipslabtradingschool.co.ke/index.html",ex:"https://one.exnesstrack.org/a/uhvsv3vp"};
+const LESSONS=[
+{l:"Beginner",e:"🌍",t:"What is forex?",m:5,s:"Forex is the market where currencies are exchanged. You trade pairs such as EUR/USD, buying one currency while selling the other.",k:["Prices are quoted in pairs","The market runs 24 hours on weekdays","You profit when price moves in your direction"],q:["In EUR/USD, which currency do you buy when you go long?",["EUR","USD","Both"],0]},
+{l:"Beginner",e:"🕯️",t:"Reading candlesticks",m:8,s:"Each candle shows the open, high, low and close for a period. Green or red bodies show whether price closed higher or lower than it opened.",k:["The body runs from open to close","Wicks show the highs and lows","Context matters more than one candle"],q:["A long upper wick means price…",["Rejected higher prices","Went straight up","Did not move"],0]},
+{l:"Beginner",e:"📏",t:"Pips, lots and leverage",m:10,s:"A pip is the standard small price move and a lot is the trade size. Leverage lets you control a bigger position with less money, which magnifies gains and losses.",k:["Know the pip value for your lot size","Smaller lots keep risk manageable","Leverage raises risk as well as reward"],q:["Leverage magnifies…",["Only profits","Only losses","Both profits and losses"],2]},
+{l:"Beginner",e:"🧾",t:"Setting up your account",m:6,s:"Open a broker account, start on demo, and learn the platform before risking real money.",k:["Practise on demo first","Learn to place, move and close orders","Go live only with a plan"],q:["Where should a beginner practise first?",["A demo account","A large live account","Nowhere"],0]},
+{l:"Intermediate",e:"🏗️",t:"Market structure",m:12,s:"Markets move in swings. Higher highs and higher lows form an uptrend, while lower highs and lower lows form a downtrend.",k:["Trade with the trend when you can","A break of structure hints at a shift","Mark swing highs and lows"],q:["Higher highs and higher lows describe…",["An uptrend","A downtrend","A range"],0]},
+{l:"Intermediate",e:"🧱",t:"Support and resistance",m:10,s:"Support is an area where price has bounced up before, and resistance is where it has turned down. Zones work better than single lines.",k:["Draw zones, not hairlines","Old resistance can become support","More touches means a more watched level"],q:["Support is where price tends to…",["Bounce up","Always fall through","Stay still"],0]},
+{l:"Intermediate",e:"🛡️",t:"Risk management",m:12,s:"Protect your account first. Risk a small fixed percentage per trade and always know your stop loss before you enter.",k:["Risk 1% or less per trade as a starting rule","Set the stop loss before entering","Aim for rewards larger than the risk"],q:["What do you decide before entering a trade?",["Stop loss and risk","Nothing","Only the target"],0]},
+{l:"Advanced",e:"✅",t:"Entry confirmation",m:12,s:"Wait for confirmation at your level, such as a rejection candle or a break and retest, instead of entering on a guess.",k:["Let price show its hand","Confirm at a planned level","Skip trades that do not qualify"],q:["Confirmation helps you…",["Avoid entering blindly","Trade more often","Skip the stop loss"],0]},
+{l:"Advanced",e:"🧠",t:"Psychology and journaling",m:10,s:"Consistency comes from discipline. Record every trade, review the results and follow your rules even after a loss.",k:["Journal entries, exits and reasons","Review your trades weekly","Never revenge trade"],q:["A trading journal helps you…",["Learn from your results","Hide losses","Trade bigger"],0]}
+];
+/* ======================================== */
+const $=id=>document.getElementById(id),rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+document.querySelectorAll('[data-l]').forEach(a=>{a.href=LINKS[a.dataset.l];a.target='_blank';a.rel='noopener'});
+$('y').textContent=new Date().getFullYear();
+const clk=()=>$('gmt').textContent=new Date().toISOString().slice(11,19)+' GMT';clk();setInterval(clk,1000);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* hero fades to dark as you scroll */
+const dim=$('dim'),stg=$('stage'),hl=$('hl');let hv=true;
+const onS=()=>{const y=scrollY,h=innerHeight;dim.style.opacity=Math.min(1,y/(h*.85))*.97;hl.style.transform=`translateX(-50%) translateY(${-y*.18}px)`;hv=y<h*1.5;stg.style.visibility=hv?'visible':'hidden'};onS();let tk0=false;addEventListener('scroll',()=>{if(!tk0){tk0=true;requestAnimationFrame(()=>{tk0=false;onS()})}},{passive:true});
+
+/* illustrations */
+const G_='#16a34a',R_='#e5484d',kd=(x,t,b,c)=>`<line x1="${x}" x2="${x}" y1="${t-9}" y2="${b+9}" stroke="#888" stroke-width="2"/><rect x="${x-9}" y="${t}" width="18" height="${Math.max(6,b-t)}" rx="4" fill="${c}"/>`;
+const row=[[60,95,120,R_],[100,80,112,G_],[140,88,114,R_],[180,70,98,G_],[220,66,92,R_],[260,100,108,G_],[300,92,116,R_],[340,70,104,G_]];
+$('m1').innerHTML=`<circle cx="200" cy="95" r="62" fill="#e6defa"/><circle cx="200" cy="95" r="46" fill="#5b3fb0"/><path d="M180 96l42-17-8 36-14-10-8 9-2-12z" fill="#fff"/>`;
+$('m2').innerHTML=row.map(r=>kd(r[0],r[1]+10,r[2]+16,r[3])).join('')+`<text x="372" y="26" font-size="13" font-weight="700" fill="#6f4dff" text-anchor="end">LESSON 05</text>`;
+$('m3').innerHTML=`<line x1="30" x2="370" y1="36" y2="36" stroke="#f3a0ae" stroke-width="2" stroke-dasharray="7 6"/><line x1="30" x2="370" y1="156" y2="156" stroke="#7fcf9c" stroke-width="2" stroke-dasharray="7 6"/><polyline points="50,66 100,72 130,92 175,88 215,114 270,108 315,146" fill="none" stroke="#120d24" stroke-width="5" stroke-linejoin="round"/><circle cx="50" cy="66" r="9" fill="#5b3fb0"/><circle cx="322" cy="152" r="12" fill="${G_}"/><text x="360" y="26" font-size="13" font-weight="700" fill="${R_}" text-anchor="end">STOP</text><text x="360" y="180" font-size="13" font-weight="700" fill="${G_}" text-anchor="end">TARGET</text>`;
+$('m4').innerHTML=`<rect x="110" y="86" width="52" height="84" rx="8" fill="#cbb6f5"/><rect x="174" y="50" width="52" height="120" rx="8" fill="#5b3fb0"/><rect x="238" y="108" width="52" height="62" rx="8" fill="#e6defa"/><g font-size="22" font-weight="800" text-anchor="middle"><text x="136" y="124" fill="#3a2486">2</text><text x="200" y="100" fill="#fff">1</text><text x="264" y="146" fill="#5b3fb0">3</text></g><text x="200" y="38" font-size="26" text-anchor="middle">🏆</text>`;
+['a1','a2','a3'].forEach((id,k)=>{let s='';for(let i=0;i<9;i++){const h=70+i*22+(i*37+k*53)%40,x=30+i*42,y=410-h;s+=`<line x1="${x}" x2="${x}" y1="${y-24}" y2="410" stroke="#fff" stroke-opacity=".5" stroke-width="2"/><rect x="${x-12}" y="${y}" width="24" height="${h-20}" rx="5" fill="#fff" fill-opacity=".5"/>`}$(id).innerHTML=s});
+
+
+/* live hero: glows pulse, sparks rise on both sides, pip chips pop, gentle tilt */
+(()=>{if(rm)return;const L=$('lgb'),T=$('tl');
+function spark(){if(!hv||document.hidden)return;const g=Math.random()<.5,s=5+Math.random()*9,e=document.createElement('i');e.className='bb '+(g?'g':'r');e.style.cssText=`width:${s}px;height:${s}px;left:calc(${g?6+Math.random()*32:60+Math.random()*32}% - ${s/2}px);top:${58+Math.random()*26}%`;L.appendChild(e);const dx=(Math.random()-.5)*50,dy=-(70+Math.random()*140);e.animate([{transform:'translate(0,0) scale(.5)',opacity:0},{opacity:.95,offset:.15},{transform:`translate(${dx}px,${dy}px) scale(1.2)`,opacity:0}],{duration:2200+Math.random()*1600,easing:'ease-out'}).onfinish=()=>e.remove()}
+function pip(){if(!hv||document.hidden)return;const g=Math.random()<.5,n=3+Math.floor(Math.random()*14),e=document.createElement('b');e.className='pip '+(g?'u':'d');e.textContent=(g?'+':'−')+n+' pips';e.style.cssText=`left:${g?4+Math.random()*26:68+Math.random()*26}%;top:${22+Math.random()*30}%`;L.appendChild(e);e.animate([{transform:'translateY(10px) scale(.8)',opacity:0},{opacity:1,offset:.2},{transform:'translateY(-46px) scale(1)',opacity:0}],{duration:2200,easing:'ease-out'}).onfinish=()=>e.remove()}
+setInterval(spark,520);setInterval(pip,2600);
+addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;T.style.transform=`perspective(1000px) rotateY(${x*4}deg) rotateX(${-y*3}deg)`})})();
+/* ads: reads ads-data.json (managed in the admin panel); falls back to the built-in list */
+(()=>{
+const FALLBACK={showDemo:false,popupDelay:6,popupSeconds:10,repeatHours:12,ads:[
+{id:"free-classes",type:"popup",tag:"Free classes",title:"Learn forex free on Telegram",text:"Join the PipsLab community and start with the free lessons today.",cta:"Join free",url:"https://t.me/PipsLabtradingSchool",art:"✈️",c1:"#5b3fb0",c2:"#8a63f0"},
+{id:"seminar-demo",demo:true,type:"popup",tag:"Upcoming seminar",title:"Live Trading Seminar",text:"Learn how to plan a trade step by step. Seats are limited.",when:"Sample · add your date and venue",cta:"Reserve a seat",url:"https://t.me/PIPSLABOWNER",art:"🎤",c1:"#1f8a5a",c2:"#0b1e2e"},
+{id:"event-demo",demo:true,type:"card",tag:"Trading event",title:"Market Q&A night",text:"Bring your questions about charts, risk and setups.",when:"Sample · add your date",cta:"Ask to join",url:"https://t.me/PIPSLABOWNER",art:"📊",c1:"#a33c9a",c2:"#2a0f45"},
+{id:"advertise",type:"card",tag:"Sponsored space",title:"Advertise your business here",text:"Reach traders and learners on the PipsLab website. Message us for rates.",cta:"Ask about ads",url:"https://t.me/PIPSLABOWNER",art:"📣",c1:"#5b3fb0",c2:"#2c1b69"}]};
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function init(C,track){const now=Date.now(),forced=new URLSearchParams(location.search).get('ad');
+const ok=a=>a.on!==false&&(C.showDemo||!a.demo)&&(!a.from||now>=new Date(a.from+'T00:00:00'))&&(!a.to||now<=new Date(a.to+'T23:59:59'));
+const link=(a,m)=>{try{const u=new URL(a.url,location.href);if(!/^https?:$/.test(u.protocol))return '#';if(u.hostname!=='t.me'){u.searchParams.set('utm_source','pipslab');u.searchParams.set('utm_medium',m);u.searchParams.set('utm_campaign',a.id)}return u.href}catch(e){return '#'}};
+const src=a=>/^(https?:)?\/\//.test(a.img)||a.img.indexOf('/')>-1?a.img:'ad-images/'+a.img;
+const lab=a=>a.sponsor?'Sponsored · '+a.sponsor:'Ad';const tag=a=>a.sponsor?'Sponsored · '+a.sponsor:(a.tag||'');
+const art=a=>a.img?`<img src="${esc(src(a))}" alt="" loading="lazy">`:esc(a.art||'📣');
+const sty=a=>`--c1:${esc(a.c1||'#5b3fb0')};--c2:${esc(a.c2||'#8a63f0')}`;
+const tr=(id,e)=>{if(!track||forced)return;try{const f=new FormData();f.append('id',id);f.append('e',e);navigator.sendBeacon('ad-track.php',f)}catch(x){}};
+const store=()=>{try{return JSON.parse(localStorage.getItem('pl_ads')||'{}')}catch(e){return{}}},mark=id=>{try{const s=store();s[id]=Date.now();localStorage.setItem('pl_ads',JSON.stringify(s))}catch(e){}};
+const cards=C.ads.filter(a=>a.type==='card'&&ok(a));
+if(cards.length){$('adg2').innerHTML=cards.map(a=>a.layout==='poster'&&a.img?`<a class="adcard poster" data-ad="${esc(a.id)}" href="${esc(link(a,'card'))}" target="_blank" rel="noopener"><img src="${esc(src(a))}" alt="${esc(a.title)}" loading="lazy"><span class="adlab">${esc(lab(a))}</span></a>`:`<article class="adcard" data-v="${esc(a.id)}"><div class="ada" style="${sty(a)}">${art(a)}</div><div class="adb"><span class="adg">${esc(tag(a))}</span><h3>${esc(a.title)}</h3><p>${esc(a.text)}</p>${a.when?`<span class="adw">${esc(a.when)}</span><br>`:''}${a.url?`<a class="btn sm" data-ad="${esc(a.id)}" href="${esc(link(a,'card'))}" target="_blank" rel="noopener">${esc(a.cta||'Learn more')}</a>`:''}</div></article>`).join('');$('events').hidden=false;
+const vio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){tr(e.target.dataset.ad||e.target.dataset.v,'view');vio.unobserve(e.target)}}),{threshold:.5});document.querySelectorAll('#adg2 .adcard').forEach(el=>{if(!el.dataset.ad)el.dataset.ad=el.dataset.v;vio.observe(el)})}
+const s=store();let timer;
+const pops=C.ads.filter(a=>a.type==='popup'&&(forced?a.id===forced:ok(a))&&(forced||!s[a.id]||now-s[a.id]>(a.repeatHours||C.repeatHours)*36e5)).sort((a,b)=>(s[a.id]||0)-(s[b.id]||0));
+const p=$('adp'),close=()=>{p.hidden=true;clearTimeout(timer)};
+function show(a,tries){if(document.querySelector('dialog[open]')){if((tries||0)<4)setTimeout(()=>show(a,(tries||0)+1),5000);return}
+const secs=a.seconds||C.popupSeconds||10,poster=a.layout==='poster'&&a.img;$('adc').classList.toggle('poster',!!poster);
+if(poster){const po=$('adpo');po.href=link(a,'popup');po.dataset.ad=a.id;$('adpi').src=src(a);$('adpi').alt=a.title||'Advertisement';$('adlab').textContent=lab(a);$('adlab').hidden=false}
+else{$('adlab').hidden=true;$('ada').style.cssText=sty(a);$('ada').innerHTML=art(a);$('adg').textContent=tag(a);$('adt').textContent=a.title;$('adtx').textContent=a.text;const w=$('adw');w.hidden=!a.when;w.textContent=a.when||'';const l=$('adl');l.hidden=!a.url;l.textContent=a.cta||'Learn more';l.href=link(a,'popup');l.dataset.ad=a.id}
+const bar=$('adbar'),i=$('adi');if(rm)bar.style.display='none';else{i.style.transition='none';i.style.width='100%';p.hidden=false;void i.offsetWidth;i.style.transition=`width ${secs}s linear`;i.style.width='0'}
+p.hidden=false;mark(a.id);tr(a.id,'view');timer=setTimeout(close,secs*1000)}
+$('adx').onclick=close;addEventListener('keydown',e=>{if(e.key==='Escape'&&!p.hidden)close()});
+document.addEventListener('click',e=>{const a=e.target.closest('a[data-ad]');if(a){tr(a.dataset.ad,'click');if(a.id==='adpo'||a.id==='adl')close()}});
+if(pops[0]){const a=pops[0];setTimeout(()=>show(a),(forced?800:(a.delay!=null?a.delay:C.popupDelay)*1000))}}
+fetch('ads-data.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null).then(d=>{if(d&&Array.isArray(d.ads)){const st=d.settings||{};init({showDemo:false,popupDelay:st.popupDelay!=null?st.popupDelay:6,popupSeconds:st.popupSeconds||10,repeatHours:st.repeatHours!=null?st.repeatHours:12,ads:d.ads},true)}else init(FALLBACK,false)});
+})();
+/* hero video: silent loop, paused when off screen or for reduced motion */
+(()=>{const v=$('hi');if(!v)return;v.muted=true;if(rm){v.removeAttribute('autoplay');v.pause();return}const go=()=>{const p=v.play();if(p&&p.catch)p.catch(()=>{})};go();document.addEventListener('visibilitychange',()=>{document.hidden?v.pause():go()});new IntersectionObserver(es=>es[0].isIntersecting?go():v.pause()).observe(v)})();
+/* EA subscription form */
+(()=>{const f=$('eaf');if(!f)return;const msg=$('eamsg'),sel=$('eap'),info=$('eainfo');let open=true;
+const say=(t,c)=>{msg.textContent=t;msg.className=c||''};
+fetch('ea-subscribe.php?info=1',{cache:'no-store'}).then(r=>r.json()).then(i=>{if(!i||!i.ok)throw 0;
+sel.innerHTML=(i.plans||[]).map(p=>`<option value="${esc(p.id)}">${esc(p.name)}${p.price?' · '+esc(p.price):''} · ${esc(p.days)} days</option>`).join('');
+open=!!i.open;info.textContent=open?'Fill in your details and we will send payment instructions.':'New subscriptions are closed right now. Please message us on Telegram.';if(!open)$('eab').disabled=true}).catch(()=>{sel.innerHTML='<option>Monthly</option>';info.textContent='Preview mode: the form goes live once the server files are installed.'});
+f.addEventListener('submit',async e=>{e.preventDefault();if(!open)return;if(!f.checkValidity()){f.reportValidity();return}
+const b=$('eab');b.disabled=true;say('Sending…');
+try{const r=await fetch('ea-subscribe.php',{method:'POST',body:new FormData(f)});const j=await r.json();
+if(j.ok){f.reset();say('Done! Your reference is '+j.ref+'.'+(j.pay_text?' '+j.pay_text:' We will contact you about payment.'),'ok')}else say(j.error||'Something went wrong. Please try again.','no')}
+catch(x){say('Could not reach the server. Please try again, or message us on Telegram.','no')}
+b.disabled=false})})();
+/* lessons hub */
+let done=[],lvl='All',cur=0;try{done=JSON.parse(localStorage.getItem('pl_done')||'[]')}catch(e){}
+const save=()=>{try{localStorage.setItem('pl_done',JSON.stringify(done))}catch(e){}};
+function prog(){$('rt').textContent=done.length+' of '+LESSONS.length;$('rc').style.strokeDashoffset=144.5*(1-done.length/LESSONS.length)}
+function grid(){$('lg2').innerHTML=LESSONS.map((x,i)=>({x,i})).filter(o=>lvl==='All'||o.x.l===lvl).map(({x,i})=>`<button class="lc${done.includes(i)?' done':''}" data-i="${i}"><span class="ck">${done.includes(i)?'✓':''}</span><span class="n">LESSON ${String(i+1).padStart(2,'0')}</span><span class="e">${x.e}</span><h3>${x.t}</h3><span class="m">${x.m} min read</span><br><span class="lv ${x.l}">${x.l}</span></button>`).join('');prog()}
+$('lg2').className='lgd';
+$('fl').innerHTML=['All','Beginner','Intermediate','Advanced'].map(l=>`<button role="tab" class="${l==='All'?'on':''}">${l}</button>`).join('');
+$('fl').onclick=e=>{if(e.target.tagName!=='BUTTON')return;lvl=e.target.textContent;[...$('fl').children].forEach(b=>b.classList.toggle('on',b===e.target));grid()};
+$('lg2').onclick=e=>{const b=e.target.closest('.lc');if(b)open(+b.dataset.i)};
+function open(i){cur=i;const x=LESSONS[i];$('dl').textContent=x.l;$('dl').className='lv '+x.l;$('dt').textContent=x.e+' '+x.t;
+$('dbd').innerHTML=`<p>${x.s}</p><ul>${x.k.map(k=>`<li>${k}</li>`).join('')}</ul><div class="qz"><b>Quick check: ${x.q[0]}</b>${x.q[1].map((o,j)=>`<button data-j="${j}">${o}</button>`).join('')}</div><div class="da"><button class="btn sm" id="md">${done.includes(i)?'Completed ✓':'Mark complete'}</button><a class="btn sm w" href="${LINKS.tg}" target="_blank" rel="noopener">Watch free class</a>${i<LESSONS.length-1?'<button class="btn sm w" id="nx">Next lesson →</button>':''}</div>`;
+if(!$('dlg').open)$('dlg').showModal();$('dlg').scrollTop=0}
+$('dbd').onclick=e=>{const q=e.target.closest('.qz button');if(q){const ok=+q.dataset.j===LESSONS[cur].q[2];q.classList.add(ok?'ok':'no');if(ok)[...q.parentNode.querySelectorAll('button')].forEach(b=>b.disabled=true);return}
+if(e.target.id==='md'){const i=done.indexOf(cur);i<0?done.push(cur):done.splice(i,1);save();grid();open(cur)}if(e.target.id==='nx')open(cur+1)};
+$('dx').onclick=()=>$('dlg').close();$('dlg').onclick=e=>{if(e.target===$('dlg'))$('dlg').close()};grid();
+
+/* live candlestick chart */
+const cv=$('ch'),cx=cv.getContext('2d'),N=30;let price=100,ser=[],dsp=[],cvis=true,lo=90,hi=110;
+const mk=f=>{const o=price,c=f?o:o+(Math.random()-.4)*3;price=c;return{o,c,h:Math.max(o,c)+Math.random()*1.2,l:Math.min(o,c)-Math.random()*1.2}};
+for(let i=0;i<N;i++){const c=mk();ser.push(c);dsp.push({...c})}
+let tk=0,off=0;setInterval(()=>{const l=ser[N-1];if(++tk%6===0){ser.shift();ser.push(mk(true));dsp.shift();dsp.push({...ser[N-1]});off=1}else{l.c+=(Math.random()-.42)*1.1;price=l.c;l.h=Math.max(l.h,l.c);l.l=Math.min(l.l,l.c)}},600);
+new IntersectionObserver(es=>cvis=es[0].isIntersecting).observe(cv);
+function draw(){requestAnimationFrame(draw);if(!cvis)return;const d=devicePixelRatio||1,w=cv.clientWidth,h=cv.clientHeight;if(cv.width!==w*d){cv.width=w*d;cv.height=h*d}
+cx.setTransform(d,0,0,d,0,0);cx.clearRect(0,0,w,h);off*=.88;let a=1e9,b=-1e9;ser.forEach(c=>{a=Math.min(a,c.l);b=Math.max(b,c.h)});lo+=(a-lo)*.08;hi+=(b-hi)*.08;
+const pad=18,Y=v=>h-pad-(v-lo)/Math.max(1,hi-lo)*(h-pad*2),st=(w-20)/N;
+cx.strokeStyle='#e2dcf2';cx.setLineDash([3,6]);for(let i=0;i<5;i++){cx.beginPath();cx.moveTo(0,pad+i*(h-pad*2)/4);cx.lineTo(w,pad+i*(h-pad*2)/4);cx.stroke()}cx.setLineDash([]);
+const pts=[];dsp.forEach((c,i)=>{const s=ser[i];['o','c','h','l'].forEach(k=>c[k]+=(s[k]-c[k])*.2);pts.push([10+(i+.5+off)*st,Y(c.c)])});
+const g=cx.createLinearGradient(0,0,0,h);g.addColorStop(0,'rgba(91,63,176,.25)');g.addColorStop(1,'rgba(91,63,176,0)');
+cx.beginPath();pts.forEach((p,i)=>i?cx.lineTo(p[0],p[1]):cx.moveTo(p[0],p[1]));cx.lineTo(pts[N-1][0],h);cx.lineTo(pts[0][0],h);cx.fillStyle=g;cx.fill();
+dsp.forEach((c,i)=>{const x=pts[i][0],col=c.c>=c.o?'#16a34a':'#dc2626';cx.strokeStyle=col;cx.fillStyle=col;cx.lineWidth=2;cx.beginPath();cx.moveTo(x,Y(c.h));cx.lineTo(x,Y(c.l));cx.stroke();const t=Y(Math.max(c.o,c.c)),bh=Math.max(3,Math.abs(Y(c.o)-Y(c.c)));cx.beginPath();cx.roundRect?cx.roundRect(x-st*.3,t,st*.6,bh,3):cx.rect(x-st*.3,t,st*.6,bh);cx.fill()});
+cx.strokeStyle='#5b3fb0';cx.lineWidth=3;cx.lineJoin='round';cx.beginPath();pts.forEach((p,i)=>i?cx.lineTo(p[0],p[1]):cx.moveTo(p[0],p[1]));cx.stroke();
+const L=pts[N-1];cx.fillStyle='#fff';cx.beginPath();cx.arc(L[0],L[1],6,0,7);cx.fill();cx.stroke()}
+draw();
+</script>
+</body>
+</html>

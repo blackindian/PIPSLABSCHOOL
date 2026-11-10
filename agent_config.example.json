@@ -1,0 +1,20 @@
+{
+  "server": "https://YOURDOMAIN/school/ea-agent.php",
+  "vps_id": "vps1",
+  "token": "PASTE-TOKEN-FROM-ADMIN-VPS-PAGE",
+  "private_key_file": "fleet.key",
+  "poll_seconds": 15,
+  "work_dir": "work",
+  "terminals": {
+    "1": "C:\\MT5\\T01\\terminal64.exe",
+    "2": "C:\\MT5\\T02\\terminal64.exe",
+    "3": "C:\\MT5\\T03\\terminal64.exe",
+    "4": "C:\\MT5\\T04\\terminal64.exe",
+    "5": "C:\\MT5\\T05\\terminal64.exe",
+    "6": "C:\\MT5\\T06\\terminal64.exe",
+    "7": "C:\\MT5\\T07\\terminal64.exe",
+    "8": "C:\\MT5\\T08\\terminal64.exe",
+    "9": "C:\\MT5\\T09\\terminal64.exe",
+    "10": "C:\\MT5\\T10\\terminal64.exe"
+  }
+}
